@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:motow_app/routing/route_paths.dart';
+import 'package:motow_app/routing/routes.dart' ;
 
 void main() {
   runApp(const MyApp());
@@ -6,7 +8,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,11 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Scaffold(
-        body: Center(
-          child: Text('Motow'),
-        ),
-      ),
+      initialRoute: RoutePaths.splashScreen,
+      routes: Routes.routerList,
     );
   }
 }
