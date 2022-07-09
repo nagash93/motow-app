@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:motow_app/common_widgets/main_button/main_button.dart';
 
 class MainView extends StatelessWidget {
   const MainView({Key? key}) : super(key: key);
@@ -8,7 +9,10 @@ class MainView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: const Center(
-        child: Text('Main'),
+        child: MainButton(
+          prefixIcon: Icons.search,
+          text: 'Buscar',
+        ),
       ),
     );
   }
