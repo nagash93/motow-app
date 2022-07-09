@@ -12,7 +12,6 @@ class SplashScreenView extends StatefulWidget {
 
 class _SplashScreenViewState extends State<SplashScreenView> {
   late RiveAnimationController _controller;
-  bool _isPlaying = false;
 
   @override
   void initState() {
@@ -32,9 +31,8 @@ class _SplashScreenViewState extends State<SplashScreenView> {
     return  Padding(
       padding: const EdgeInsets.all(80.0),
       child: Center(
-        child: RiveAnimation.asset(Assets.animationsSplanscreen,
+        child: RiveAnimation.asset(Assets.animationsSplashscreen,
           controllers: [_controller],
-
         ),
       ),
     );

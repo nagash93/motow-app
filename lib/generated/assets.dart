@@ -2,6 +2,7 @@
 class Assets {
   Assets._();
 
-  static const String animationsSplanscreen = 'assets/animations/splashscreen.riv';
+  static const String animationsSplashscreen = 'assets/animations/splashscreen.riv';
+  static const String svgOnboarding1 = 'assets/svg/onboarding1.svg';
 
 }
