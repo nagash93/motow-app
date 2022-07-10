@@ -10,24 +10,28 @@ class MainButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Ink(
-        decoration: BoxDecoration(
-          color: ColorApp.black,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Icon(prefixIcon,color: ColorApp.white,),
-            Text(text??'',
-              style: const TextStyle(
-              color: ColorApp.white,
-            ),),
-            Icon(suffixIcon,color: ColorApp.white,),
-          ],
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: InkWell(
+        onTap: onTap,
+        child: Ink(
+          decoration: BoxDecoration(
+            color: ColorApp.black,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Icon(prefixIcon,color: ColorApp.white,),
+              Text(text??'',
+                style: const TextStyle(
+                  fontSize: 18,
+                color: ColorApp.white,
+              ),),
+              Icon(suffixIcon,color: ColorApp.white,),
+            ],
+          ),
         ),
       ),
     );

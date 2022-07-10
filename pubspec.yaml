@@ -21,6 +21,17 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: JosefinSans
+      fonts:
+        - asset: fonts/JosefinSans-Light.ttf
+          weight: 300
+        - asset: fonts/JosefinSans-Regular.ttf
+          weight: 400
+        - asset: fonts/JosefinSans-SemiBold.ttf
+          weight: 600
+        - asset: fonts/JosefinSans-Bold.ttf
+          weight: 700
   assets:
     - assets/animations/
     - assets/svg/
