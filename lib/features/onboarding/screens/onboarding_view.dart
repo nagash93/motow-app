@@ -1,35 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:motow_app/features/onboarding/screens/Components/onboarding_indicator.dart';
 import 'package:motow_app/routing/route_paths.dart';
 
 import 'Components/onboarding_item.dart';
 
-class OnboardingView extends StatefulWidget {
+class OnboardingView extends HookWidget {
   const OnboardingView({Key? key}) : super(key: key);
 
   @override
-  State<OnboardingView> createState() => _OnboardingViewState();
-}
-
-class _OnboardingViewState extends State<OnboardingView> {
-  PageController? _pageController;
-  int selectedIndex = 0;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final pageController = usePageController();
+    final selectedIndex = useState(0);
     return Scaffold(
       body: Stack(
         alignment: const Alignment(0, 1),
         children: [
           PageView(
-            controller: _pageController,
+            controller: pageController,
             children: const [
               OnboardingItem(
                 secondaryText: 'Encuentra Gruas para moto',
@@ -46,16 +35,14 @@ class _OnboardingViewState extends State<OnboardingView> {
               ),
             ],
             onPageChanged: (indexPage) {
-              setState(() {
-                selectedIndex = indexPage;
+              selectedIndex.value = indexPage;
                 if (indexPage == 3) {
-                  Future.delayed(const Duration(milliseconds:1500 )).then(
+                  Future.delayed(const Duration(milliseconds:1200 )).then(
                       (value) => Navigator.pushNamed(context, RoutePaths.main));
                 }
-              });
             },
           ),
-          OnboardingIndicator(selectedIndex: selectedIndex)
+          OnboardingIndicator(selectedIndex: selectedIndex.value)
         ],
       ),
     );
