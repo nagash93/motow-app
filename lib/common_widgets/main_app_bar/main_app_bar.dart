@@ -10,14 +10,17 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget{
     return AppBar(
       backgroundColor: ColorApp.white,
       toolbarHeight: 60,
-      elevation: 1.0,
+      elevation: 0.2,
       automaticallyImplyLeading: false,
       titleSpacing: 0,
       title: const Text('MoTow',style:TextStyle(
         color:  ColorApp.black
       ),),
       centerTitle: true,
-      leading: const Icon(Icons.menu,color: ColorApp.black,),
+      leading:  IconButton(
+        icon:  const Icon(Icons.menu,color: ColorApp.black,),
+        onPressed: () => Scaffold.of(context).openDrawer(),
+      ),
       actions: const [
         MiniAvatarUser(),
       ],

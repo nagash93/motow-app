@@ -4,6 +4,7 @@ import 'package:motow_app/common_widgets/item_tow/item_tow.dart';
 import 'package:motow_app/common_widgets/main_app_bar/main_app_bar.dart';
 import 'package:motow_app/common_widgets/main_button/main_button.dart';
 import 'package:motow_app/common_widgets/mini_slider/mini_slider.dart';
+import 'package:motow_app/features/drawer_menu/drawer_main_menu.dart';
 
 class MainView extends StatelessWidget {
   const MainView({Key? key}) : super(key: key);
@@ -12,6 +13,7 @@ class MainView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: const MainAppBar(),
+        drawer: const DrawerMainMenu(),
         body: Column(
           children: [
             const MiniSlider(),
