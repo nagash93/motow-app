@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Motow',
       theme: ThemeData(
+        fontFamily: 'JosefinSans',
         scaffoldBackgroundColor: ColorApp.white,
         primaryColor: ColorApp.grey,
       ),
