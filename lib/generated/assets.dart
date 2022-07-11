@@ -3,6 +3,7 @@ class Assets {
   Assets._();
 
   static const String animationsSplashscreen = 'assets/animations/splashscreen.riv';
+  static const String iconLauncherIcon = 'assets/icon/launcher_icon.png';
   static const String svgOnboarding1 = 'assets/svg/onboarding1.svg';
 
 }
