@@ -14,7 +14,7 @@ class SplashScreenView extends HookWidget {
       controller.isActiveChanged.addListener(() {
         if (!controller.isActive) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            Navigator.pushNamed(context, RoutePaths.onboarding);
+            Navigator.pushReplacementNamed(context, RoutePaths.onboarding);
           });
         }
       });

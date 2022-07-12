@@ -39,7 +39,7 @@ class OnboardingView extends HookWidget {
               selectedIndex.value = indexPage;
               if (indexPage == 3) {
                 Future.delayed(const Duration(milliseconds: 1200)).then(
-                    (value) => Navigator.pushNamed(context, RoutePaths.main));
+                    (value) => Navigator.pushReplacementNamed(context, RoutePaths.main));
               }
             },
           ),

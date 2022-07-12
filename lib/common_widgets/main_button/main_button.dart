@@ -10,9 +10,7 @@ class MainButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: InkWell(
+    return InkWell(
         onTap: onTap,
         child: Ink(
           decoration: BoxDecoration(
@@ -33,7 +31,6 @@ class MainButton extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }
