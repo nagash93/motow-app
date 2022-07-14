@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:motow_app/common_widgets/logo/motow_logo.dart';
-import 'package:motow_app/constants/color_app.dart';
+import 'package:motow_app/constants/styles/style_shared.dart';
 import 'package:motow_app/routing/route_paths.dart';
 
 class DrawerMainMenu extends StatelessWidget {
@@ -17,7 +17,7 @@ class DrawerMainMenu extends StatelessWidget {
               title: 'Datos de ayuda',
               icon: Icons.help_outline,
               onTap: () {
-                Navigator.pop(context);
+                Navigator.pushNamed(context, RoutePaths.helpScreen);
               },
             ),
             _itemMenu(

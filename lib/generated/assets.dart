@@ -4,6 +4,8 @@ class Assets {
 
   static const String animationsSplashscreen = 'assets/animations/splashscreen.riv';
   static const String iconLauncherIcon = 'assets/icon/launcher_icon.png';
+  static const String iconPlmotos = 'assets/icon/plmotos.png';
   static const String svgOnboarding1 = 'assets/svg/onboarding1.svg';
+  static const String svgTowing = 'assets/svg/towing.svg';
 
 }

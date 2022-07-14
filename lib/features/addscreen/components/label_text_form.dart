@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:motow_app/constants/color_app.dart';
+import 'package:motow_app/constants/styles/style_shared.dart';
 
 class LabelTextForm extends StatelessWidget {
   const LabelTextForm({Key? key,this.text}) : super(key: key);

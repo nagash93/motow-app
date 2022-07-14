@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:motow_app/common_widgets/simple_app_bar/simple_app_bar.dart';
-import 'package:motow_app/constants/color_app.dart';
+import 'package:motow_app/constants/styles/style_shared.dart';
 import 'package:motow_app/features/addscreen/components/label_text_form.dart';
 import 'package:motow_app/features/addscreen/components/page_indicator.dart';
 

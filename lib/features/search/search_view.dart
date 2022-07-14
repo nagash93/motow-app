@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:motow_app/common_widgets/main_button/main_button.dart';
 import 'package:motow_app/common_widgets/simple_app_bar/simple_app_bar.dart';
-import 'package:motow_app/constants/color_app.dart';
+import 'package:motow_app/constants/styles/style_shared.dart';
 import 'package:motow_app/features/search/components/sub_title.dart';
 import 'package:motow_app/features/search/components/tag_text.dart';
+import 'package:motow_app/routing/route_paths.dart';
 
 class SearchView extends HookWidget {
   SearchView({Key? key}) : super(key: key);
@@ -88,10 +89,14 @@ class SearchView extends HookWidget {
                       );
                     }).toList(),
                   )),
-              const SizedBox(height: 30,),
-              const MainButton(
+              const SizedBox(
+                height: 30,
+              ),
+              MainButton(
                 text: 'Buscar',
                 prefixIcon: Icons.search,
+                onTap: () =>
+                    Navigator.pushNamed(context, RoutePaths.listSearch),
               )
             ],
           ),

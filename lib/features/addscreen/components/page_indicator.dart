@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:motow_app/constants/color_app.dart';
+import 'package:motow_app/constants/styles/style_shared.dart';
 
 class PageIndicator extends StatelessWidget {
    const PageIndicator({Key? key,this.currentPage,this.totalPage}) : super(key: key);

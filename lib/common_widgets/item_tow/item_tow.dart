@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:motow_app/constants/color_app.dart';
+import 'package:motow_app/constants/styles/style_shared.dart';
 
 class ItemTow extends StatelessWidget {
   const ItemTow({Key? key,this.title,this.state}) : super(key: key);

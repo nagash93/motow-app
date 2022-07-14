@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:motow_app/constants/color_app.dart';
+import 'package:motow_app/constants/styles/color_app.dart';
 
 class SimpleAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const SimpleAppBar({Key? key, this.title}) : super(key: key);
+  const SimpleAppBar({Key? key, this.title,this.actions}) : super(key: key);
 
   final String? title;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +37,7 @@ class SimpleAppBar extends StatelessWidget implements PreferredSizeWidget {
               },
             )),
       ),
+      actions: actions,
     );
   }
 

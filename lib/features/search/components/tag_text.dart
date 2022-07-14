@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:motow_app/constants/color_app.dart';
+import 'package:motow_app/constants/styles/style_shared.dart';
 
 class TagText extends StatelessWidget {
    const TagText({Key? key,this.text,this.isSelected=false}) : super(key: key);

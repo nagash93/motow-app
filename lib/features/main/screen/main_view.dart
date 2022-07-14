@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/config.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 import 'package:motow_app/common_widgets/drawer_menu/drawer_main_menu.dart';
 import 'package:motow_app/common_widgets/item_tow/item_tow.dart';
 import 'package:motow_app/common_widgets/main_app_bar/main_app_bar.dart';
 import 'package:motow_app/common_widgets/main_button/main_button.dart';
 import 'package:motow_app/common_widgets/mini_slider/mini_slider.dart';
-import 'package:motow_app/constants/color_app.dart';
+import 'package:motow_app/constants/styles/style_shared.dart';
 import 'package:motow_app/routing/route_paths.dart';
 
 

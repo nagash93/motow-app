@@ -24,27 +24,18 @@ class RegisterView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text('El registro y uso de la app es ',
-                style:  TextStyle(
-                    fontSize: 20
-                )
-            ),
+                style: TextStyle(fontSize: 20)),
             const SizedBox(
               height: 10,
             ),
-            const Text('100% Gratis',
-                style:  TextStyle(
-                    fontSize: 25
-                )),
+            const Text('100% Gratis', style: TextStyle(fontSize: 25)),
             const SizedBox(
               height: 50,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children:const [
-                 Text('Beneficios de registro:',
-                    style:  TextStyle(
-                        fontSize: 25
-                    )),
+              children: const [
+                Text('Beneficios de registro:', style: TextStyle(fontSize: 25)),
               ],
             ),
             const SizedBox(
@@ -58,25 +49,62 @@ class RegisterView extends StatelessWidget {
                     return Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
                       child: Row(
-                        children: [const Icon(Icons.check,size: 20,),
-                          const SizedBox(width: 10,),
-                          Text(bonusList[index],
-                          style: const TextStyle(
-                            fontSize: 20
-                          ),)],
+                        children: [
+                          const Icon(
+                            Icons.check,
+                            size: 20,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            bonusList[index],
+                            style: const TextStyle(fontSize: 20),
+                          )
+                        ],
                       ),
                     );
                   }),
             ),
-            const MainButton(
+            MainButton(
               text: 'Regristar',
+              onTap: () => _openMenu(context),
             ),
-            const Expanded(
-              flex: 1,
-                child: SizedBox())
+            const SizedBox(
+              height: 20,
+            ),
+            const Text('Si tienes cuenta inicia sesion aqui',
+                style: const TextStyle(fontSize: 18)),
+            const Expanded(flex: 1, child: SizedBox())
           ],
         ),
       ),
     );
+  }
+
+  _openMenu(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+        builder: (context) {
+       return Container(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  MainButton(
+                    text: 'Google',
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  MainButton(
+                    text: 'Apple',
+                  ),
+                ],
+              ));
+        });
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:motow_app/constants/color_app.dart';
+import 'package:motow_app/constants/styles/style_shared.dart';
 
 class MainButton extends StatelessWidget {
   const MainButton({Key? key,this.text,this.prefixIcon,this.suffixIcon,this.onTap}) : super(key: key);
