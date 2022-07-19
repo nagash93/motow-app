@@ -14,7 +14,7 @@ class ListSearchView extends StatelessWidget {
     ),
     body: ListView.builder(
     itemCount: 6, itemBuilder: (context, i) =>  ItemTowHorizontal(
-      onTap: ()=>Navigator.pushNamed(context, RoutePaths.itemDetail),
+      onTap: ()=>Navigator.pushNamed(context, RoutePaths.productDetail),
     )),
     );
   }

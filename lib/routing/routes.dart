@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:motow_app/features/addscreen/add_view.dart';
 import 'package:motow_app/features/favorites/favorites_view.dart';
 import 'package:motow_app/features/help/help_view.dart';
-import 'package:motow_app/features/item/item_detail_view.dart';
 import 'package:motow_app/features/main/screen/main_view.dart';
 import 'package:motow_app/features/onboarding/screens/onboarding_view.dart';
+import 'package:motow_app/features/product/product_detail_view.dart';
 import 'package:motow_app/features/register/register_view.dart';
 import 'package:motow_app/features/search/list_search_view.dart';
 import 'package:motow_app/features/search/search_view.dart';
@@ -21,7 +21,7 @@ class Routes{
     RoutePaths.addScreen: (context) => const AddView(),
     RoutePaths.register: (context) =>  RegisterView(),
     RoutePaths.listSearch: (context) =>  ListSearchView(),
-    RoutePaths.itemDetail: (context) =>  ItemDetailView(),
+    RoutePaths.productDetail: (context) =>  ProductDetailView(),
     RoutePaths.helpScreen: (context) =>  HelpView(),
   };
 }

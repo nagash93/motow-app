@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:motow_app/constants/styles/color_app.dart';
 
-abstract class ThemeText {
+class ThemeText {
   static const TextStyle simpleText =
       TextStyle(fontFamily: 'JosefinSans', color: ColorApp.black, fontSize: 16);
   static const TextStyle subTitle =

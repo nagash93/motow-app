@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:motow_app/common_widgets/avatar_user/mini_avatar_user.dart';
+import 'package:motow_app/common_widgets/comment/comment_user.dart';
 import 'package:motow_app/common_widgets/simple_app_bar/simple_app_bar.dart';
 import 'package:motow_app/common_widgets/star_widget/star_widget.dart';
 
 import 'package:motow_app/constants/styles/style_shared.dart';
 
-class ItemDetailView extends StatelessWidget {
-  const ItemDetailView({Key? key}) : super(key: key);
+class ProductDetailView extends StatelessWidget {
+  const ProductDetailView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -71,11 +71,11 @@ class ItemDetailView extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                _commment(),
-                _commment(isReverse: true),
-                _commment(),
-                _commment(isReverse: true),
-                _commment(),
+                const CommentUser(),
+                const CommentUser(isReverse: true),
+                const CommentUser(),
+                const CommentUser(isReverse: true),
+                const CommentUser(),
               ],
             ),
           ),
@@ -95,23 +95,5 @@ class ItemDetailView extends StatelessWidget {
     );
   }
 
-  _commment({bool isReverse = false}) {
-    return Row(
-      children: [
-        if (!isReverse) const MiniAvatarUser(),
-        Expanded(
-          child: Container(
-            padding: const EdgeInsets.all(8.0),
-            decoration: BoxDecarationShared.boxBorderRaidus
-                .copyWith(border: Border.all(color: ColorApp.black, width: 1)),
-            child: const Text(
-              'Mensaje de  muestra',
-              style: ThemeText.simpleText,
-            ),
-          ),
-        ),
-        if (isReverse) const MiniAvatarUser(),
-      ],
-    );
-  }
+
 }

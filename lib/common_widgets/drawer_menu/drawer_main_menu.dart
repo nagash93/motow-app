@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:motow_app/common_widgets/drawer_menu/item_menu.dart';
 import 'package:motow_app/common_widgets/logo/motow_logo.dart';
 import 'package:motow_app/constants/styles/style_shared.dart';
 import 'package:motow_app/routing/route_paths.dart';
@@ -13,14 +14,14 @@ class DrawerMainMenu extends StatelessWidget {
         child: ListView(
           children: [
             const DrawerHeader(child: MotoLogo(color: ColorApp.white,)),
-            _itemMenu(
+            ItemMenuDrawer(
               title: 'Datos de ayuda',
               icon: Icons.help_outline,
               onTap: () {
                 Navigator.pushNamed(context, RoutePaths.helpScreen);
               },
             ),
-            _itemMenu(
+            ItemMenuDrawer(
               title: 'Favoritos',
               icon: Icons.star,
               onTap: () {
@@ -28,14 +29,14 @@ class DrawerMainMenu extends StatelessWidget {
                 Navigator.pushNamed(context, RoutePaths.favorites);
               },
             ),
-            _itemMenu(
+            ItemMenuDrawer(
               title: 'Agregar Anuncios',
               icon: Icons.add,
               onTap: () {
                 Navigator.pushNamed(context, RoutePaths.addScreen);
               },
             ),
-            _itemMenu(
+            ItemMenuDrawer(
               title: 'Preguntas Frecuentes',
               icon: Icons.question_answer,
               onTap: () {
@@ -44,18 +45,5 @@ class DrawerMainMenu extends StatelessWidget {
             ),
           ],
         ));
-  }
-
-  Widget _itemMenu({String? title, IconData? icon, VoidCallback? onTap}) {
-    return ListTile(
-      leading:  Icon(
-        icon,
-        color: ColorApp.white,
-      ),
-      title:  Text(title??'',
-      style: const TextStyle(color: ColorApp.white,
-      fontSize: 18)),
-      onTap: onTap,
-    );
   }
 }
