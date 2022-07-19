@@ -1,27 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:motow_app/constants/styles/color_app.dart';
-import 'package:motow_app/routing/route_paths.dart';
-import 'package:motow_app/routing/routes.dart' ;
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:motow_app/app/firebase_config.dart';
+import 'package:motow_app/app/my_app.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  FirebaseConfig.initializeFirebaseApp().whenComplete(
+    () => FirebaseConfig.initializeFirestore(),
+  );
+
+  runApp(const ProviderScope(child: MyApp()));
 }
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Motow',
-      theme: ThemeData(
-        fontFamily: 'JosefinSans',
-        scaffoldBackgroundColor: ColorApp.white,
-        primaryColor: ColorApp.grey,
-      ),
-      initialRoute: RoutePaths.splashScreen,
-      routes: Routes.routerList,
-    );
-  }
-}
-
