@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:motow_app/constants/color_app.dart';
+import 'package:motow_app/constants/styles/style_shared.dart';
 
 class MainButton extends StatelessWidget {
   const MainButton({Key? key,this.text,this.prefixIcon,this.suffixIcon,this.onTap}) : super(key: key);
@@ -10,9 +10,7 @@ class MainButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: InkWell(
+    return InkWell(
         onTap: onTap,
         child: Ink(
           decoration: BoxDecoration(
@@ -33,7 +31,6 @@ class MainButton extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }

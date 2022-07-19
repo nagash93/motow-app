@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import 'package:motow_app/constants/color_app.dart';
+import 'package:motow_app/constants/styles/style_shared.dart';
 
 class MiniSlider extends HookWidget {
   const MiniSlider({Key? key}) : super(key: key);
@@ -12,7 +12,6 @@ class MiniSlider extends HookWidget {
     final selectedIndex = useState(0);
     return Container(
         height: 170,
-        margin: EdgeInsets.all(10),
         child: Stack(
           alignment: Alignment(-0.9, 0.8),
           children: [
@@ -44,8 +43,6 @@ class MiniSlider extends HookWidget {
   Widget _itemSlider() {
     return Container(
       width: double.infinity,
-    
-      margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
           color: ColorApp.grey, borderRadius: BorderRadius.circular(20)),
     );

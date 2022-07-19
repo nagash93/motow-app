@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:motow_app/constants/color_app.dart';
+import 'package:motow_app/constants/styles/color_app.dart';
 import 'package:motow_app/routing/route_paths.dart';
 import 'package:motow_app/routing/routes.dart' ;
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:motow_app/constants/color_app.dart';
+import 'package:motow_app/constants/styles/style_shared.dart';
 
 class ItemTow extends StatelessWidget {
   const ItemTow({Key? key,this.title,this.state}) : super(key: key);
@@ -20,8 +20,16 @@ class ItemTow extends StatelessWidget {
             ),
 
           ),
-          Text(title??'Moto Juan',textAlign: TextAlign.left,),
-          Text(state??'V/Viña del mar',textAlign: TextAlign.start,),
+          Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Text(title??'Moto Juan',textAlign: TextAlign.left,),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Text(state??'V/Viña del mar',textAlign: TextAlign.start,style: const TextStyle(
+                color: ColorApp.grey
+            ),),
+          ),
         ],
       ),
     );

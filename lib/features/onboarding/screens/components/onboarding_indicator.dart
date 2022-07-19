@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:motow_app/constants/color_app.dart';
+import 'package:motow_app/constants/styles/style_shared.dart';
 
 class OnboardingIndicator extends StatelessWidget {
   const OnboardingIndicator({Key? key,this.length=0,this.selectedIndex=0,})
