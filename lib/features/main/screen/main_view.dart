@@ -10,75 +10,75 @@ import 'package:motow_app/common_widgets/mini_slider/mini_slider.dart';
 import 'package:motow_app/constants/styles/style_shared.dart';
 import 'package:motow_app/routing/route_paths.dart';
 
-
 class MainView extends StatelessWidget {
-   MainView({Key? key}) : super(key: key);
+  MainView({Key? key}) : super(key: key);
 
   //ZoomDrawerController controller = ZoomDrawerController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar:  MainAppBar(),
-        drawer: const DrawerMainMenu(),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            children: [
-              const MiniSlider(),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: MainButton(
-                  prefixIcon: Icons.search,
-                  text: 'Buscar',
-                  onTap: () {
-                    CollectionReference users = FirebaseFirestore.instance.collection('users');
-                    users
-                        .add({
-                      'full_name': 'test', // John Doe
-                      'company': 'test2', // Stokes and Sons
-                      'age': 3 // 42
-                    });
-                  },
-                ),
+      appBar: MainAppBar(),
+      drawer: const DrawerMainMenu(),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        child: Column(
+          children: [
+            const MiniSlider(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: MainButton(
+                prefixIcon: Icons.search,
+                text: 'Buscar',
+                onTap: () {
+                  Navigator.pushNamed(context, RoutePaths.search);
+                },
               ),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Row(
-                  children: const [
-                    Expanded(
-                        child: Text('Ultimos Agregdos',
-                            style: TextStyle(
-                              fontSize: 16,
-                            ))),
-                    Text('Ver Todos',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: ColorApp.grey
-                        ))
-                  ],
-                ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                children: const [
+                  Expanded(
+                    child: Text(
+                      'Ultimos Agregdos',
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    'Ver Todos',
+                    style: TextStyle(fontSize: 16, color: ColorApp.grey),
+                  )
+                ],
               ),
-              Expanded(
-                child: GridView.builder(
-                    gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: 200,
-                        childAspectRatio: 1 / 1,
-                        crossAxisSpacing: 5,
-                        mainAxisSpacing: 20),
-                    itemCount: 10,
-                    itemBuilder: (BuildContext ctx, index) {
-                      return const ItemTow();
-                    }),
-              )
-            ],
-          ),
-        ));
+            ),
+            Expanded(
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 200,
+                  childAspectRatio: 1 / 1,
+                  crossAxisSpacing: 5,
+                  mainAxisSpacing: 20,
+                ),
+                itemCount: 10,
+                itemBuilder: (BuildContext ctx, index) {
+                  return const ItemTow();
+                },
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 
-  _mainScren(  ZoomDrawerController controller ){
+  _mainScren(ZoomDrawerController controller) {
     return Scaffold(
-        appBar: MainAppBar(controller: controller,),
+        appBar: MainAppBar(
+          controller: controller,
+        ),
         body: Column(
           children: [
             const MiniSlider(),

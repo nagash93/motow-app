@@ -18,7 +18,11 @@ class RegisterController extends StateNotifier<AsyncValue<void>> {
     'Recibir novedades y \nnuevas funciones de la app '
   ];
 
-  void getUser() {
+  void signInWithGoogle() {
+    _repository.signInWithGoogle();
+  }
+
+  void signInWithApple() {
     _repository.signInWithGoogle();
   }
 }

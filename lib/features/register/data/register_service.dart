@@ -19,7 +19,7 @@ class RegisterService {
 
   registerUser(GoogleSignInAccount user) {
     final userCollection = _firebaseFirestore.collection("/users");
-
+    //TODO: Create user model
     userCollection.where('email', isEqualTo: user.email).get().then((value) {
       if (value.docs.isEmpty) {
         userCollection.add({
