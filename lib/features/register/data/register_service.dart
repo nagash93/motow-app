@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class RegisterService {
@@ -12,7 +13,7 @@ class RegisterService {
 
       return user;
     } catch (error) {
-      print(error);
+      debugPrint(error.toString());
     }
   }
 
@@ -27,7 +28,7 @@ class RegisterService {
           'photo_url': user.photoUrl,
           'email': user.email, // John Doe
           'register_date': FieldValue.serverTimestamp(),
-          'last_login':FieldValue.serverTimestamp(),
+          'last_login': FieldValue.serverTimestamp(),
         });
       } else {
         userCollection.doc(value.docs.first.id).update({

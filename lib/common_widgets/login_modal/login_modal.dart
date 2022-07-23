@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:motow_app/common_widgets/main_button/main_button.dart';
-import 'package:motow_app/features/register/provider/register_provider.dart';
-
+import 'package:motow_app/features/register/controller/register_controller.dart';
 
 class LoginModal {
-
   openMenu(BuildContext context) {
     showModalBottomSheet(
         context: context,
@@ -17,23 +15,29 @@ class LoginModal {
               padding: const EdgeInsets.all(20),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                children:  [
-                  HookConsumer(builder: (BuildContext context, WidgetRef ref, Widget? child) {
-                    return MainButton(
-                      text: 'Google',
-                      onTap: ()=> ref.read(myController.notifier),
-                    );
-                  },
+                children: [
+                  HookConsumer(
+                    builder: (
+                      BuildContext context,
+                      WidgetRef ref,
+                      Widget? child,
+                    ) {
+                      return MainButton(
+                        text: 'Google',
+                        onTap: () {
+                          ref.read(registerController.notifier).getUser();
+                        },
+                      );
+                    },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  MainButton(
+                  const MainButton(
                     text: 'Apple',
                   ),
                 ],
               ));
         });
   }
-
 }
