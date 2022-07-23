@@ -1,9 +1,14 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:motow_app/common_widgets/login_modal/login_modal.dart';
 import 'package:motow_app/common_widgets/main_button/main_button.dart';
 import 'package:motow_app/common_widgets/simple_app_bar/simple_app_bar.dart';
+import 'package:motow_app/features/register/provider/register_provider.dart';
+import 'package:motow_app/routing/route_paths.dart';
 
-class RegisterView extends StatelessWidget {
+class RegisterView extends ConsumerWidget {
   RegisterView({Key? key}) : super(key: key);
 
   final bonusList = [
@@ -14,7 +19,22 @@ class RegisterView extends StatelessWidget {
     'Recibir novedades y \nnuevas funciones de la app '
   ];
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
+    final getUser = ref.watch(myController);
+   // final getUser2 = ref.watch(myController.notifier);
+
+  /*  ref.listen(userRegisterGoogle, (AsyncValue<bool>? _, AsyncValue<bool> loginUser){
+
+      loginUser.when(loading: () => const CircularProgressIndicator(),
+          error: (err, stack) => Text('Error: $err'),
+          data: (loginUser) {
+            if (loginUser) {
+              Navigator.pushNamed(context, RoutePaths.main);
+            }});
+
+    });*/
+
     return Scaffold(
       appBar: const SimpleAppBar(
         title: 'Registro',

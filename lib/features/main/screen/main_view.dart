@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 
@@ -30,7 +31,15 @@ class MainView extends StatelessWidget {
                 child: MainButton(
                   prefixIcon: Icons.search,
                   text: 'Buscar',
-                  onTap: () => Navigator.pushNamed(context, RoutePaths.search),
+                  onTap: () {
+                    CollectionReference users = FirebaseFirestore.instance.collection('users');
+                    users
+                        .add({
+                      'full_name': 'test', // John Doe
+                      'company': 'test2', // Stokes and Sons
+                      'age': 3 // 42
+                    });
+                  },
                 ),
               ),
               Padding(
