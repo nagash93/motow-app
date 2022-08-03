@@ -7,6 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:motow_app/app/my_app.dart';
 
 import 'package:motow_app/main.dart';
 
