@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:motow_app/features/onboarding/data/onboarding_repository.dart';
 import 'package:motow_app/features/onboarding/screens/Components/onboarding_indicator.dart';
 import 'package:motow_app/routing/route_paths.dart';
 
+import '../controller/onboarding_controller.dart';
 import 'Components/onboarding_item.dart';
 
-class OnboardingView extends HookWidget {
+class OnboardingView extends HookConsumerWidget {
   const OnboardingView({Key? key}) : super(key: key);
 
   final listPage = const [
@@ -25,7 +28,7 @@ class OnboardingView extends HookWidget {
   ];
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,ref) {
     final pageController = usePageController();
     final selectedIndex = useState(0);
     return Scaffold(
@@ -39,7 +42,10 @@ class OnboardingView extends HookWidget {
               selectedIndex.value = indexPage;
               if (indexPage == 3) {
                 Future.delayed(const Duration(milliseconds: 1200)).then(
-                    (value) => Navigator.pushReplacementNamed(context, RoutePaths.main));
+                    (value) {
+                      ref.read(onboardingController.notifier).setCheckOnboarding();
+                      Navigator.pushReplacementNamed(context, RoutePaths.main);
+                    });
               }
             },
           ),

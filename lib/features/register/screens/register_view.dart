@@ -23,7 +23,7 @@ class RegisterView extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'El registro y uso de la app es ',
+              'El registro y uso de la app es',
               style: TextStyle(fontSize: 20),
             ),
             const SizedBox(
