@@ -3,31 +3,31 @@ import 'package:flutter_svg/svg.dart';
 import 'package:motow_app/constants/styles/style_shared.dart';
 import 'package:motow_app/generated/assets.dart';
 
-class OnboardingItem extends StatelessWidget {
+class OnBoardingItem extends StatelessWidget {
   final String? primaryText;
   final String? secondaryText;
   final Icon? icon;
   final String? vector;
   final bool blackBackground;
 
-  const OnboardingItem(
-      {Key? key,
-      this.primaryText,
-      this.secondaryText,
-      this.icon,
-      this.vector,
-      this.blackBackground = false})
-      : super(key: key);
+  const OnBoardingItem({
+    Key? key,
+    this.primaryText,
+    this.secondaryText,
+    this.icon,
+    this.vector,
+    this.blackBackground = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return blackBackground
         ? Container(
-      color: ColorApp.black,
-          child: Center(
-            child: _titleBox(primaryText??'',  true),
-          ),
-        )
+            color: ColorApp.black,
+            child: Center(
+              child: _titleBox(primaryText ?? '', true),
+            ),
+          )
         : Container(
             color: ColorApp.white,
             child: Column(

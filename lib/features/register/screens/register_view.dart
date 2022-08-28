@@ -4,6 +4,7 @@ import 'package:motow_app/common_widgets/login_modal/login_modal.dart';
 import 'package:motow_app/common_widgets/main_button/main_button.dart';
 import 'package:motow_app/common_widgets/simple_app_bar/simple_app_bar.dart';
 import 'package:motow_app/features/register/controller/register_controller.dart';
+import 'package:motow_app/features/register/screens/register_constants.dart';
 
 class RegisterView extends ConsumerWidget {
   const RegisterView({Key? key}) : super(key: key);
@@ -14,34 +15,34 @@ class RegisterView extends ConsumerWidget {
     final controller = ref.read(registerController.notifier);
 
     return Scaffold(
-      appBar: const SimpleAppBar(
-        title: 'Registro',
+      appBar: SimpleAppBar(
+        title: RegisterConstants.title,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'El registro y uso de la app es',
-              style: TextStyle(fontSize: 20),
+            Text(
+              RegisterConstants.registerSubtitle,
+              style: const TextStyle(fontSize: 20),
             ),
             const SizedBox(
               height: 10,
             ),
-            const Text(
-              '100% Gratis',
-              style: TextStyle(fontSize: 25),
+            Text(
+              RegisterConstants.hundred,
+              style: const TextStyle(fontSize: 25),
             ),
             const SizedBox(
               height: 50,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
+              children: [
                 Text(
-                  'Beneficios de registro:',
-                  style: TextStyle(fontSize: 25),
+                  RegisterConstants.registrationBenefits,
+                  style: const TextStyle(fontSize: 25),
                 ),
               ],
             ),
@@ -75,7 +76,7 @@ class RegisterView extends ConsumerWidget {
               ),
             ),
             MainButton(
-              text: 'Registrar',
+              text: RegisterConstants.registerButton,
               onTap: () => LoginModal().openMenu(context),
             ),
             const SizedBox(

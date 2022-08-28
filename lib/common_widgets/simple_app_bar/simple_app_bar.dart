@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:motow_app/constants/styles/color_app.dart';
 
 class SimpleAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const SimpleAppBar({Key? key, this.title,this.actions}) : super(key: key);
+  const SimpleAppBar({Key? key, this.title, this.actions}) : super(key: key);
 
   final String? title;
   final List<Widget>? actions;
@@ -23,19 +23,20 @@ class SimpleAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Ink(
-            decoration: const ShapeDecoration(
-              color: ColorApp.ultraLightGray,
-              shape: CircleBorder(),
+          decoration: const ShapeDecoration(
+            color: ColorApp.ultraLightGray,
+            shape: CircleBorder(),
+          ),
+          child: IconButton(
+            icon: const Icon(
+              Icons.arrow_back,
+              color: ColorApp.black,
             ),
-            child: IconButton(
-              icon: const Icon(
-                Icons.arrow_back,
-                color: ColorApp.black,
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            )),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
       ),
       actions: actions,
     );
