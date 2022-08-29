@@ -5,12 +5,7 @@ import 'package:motow_app/features/onboarding/data/onboarding_repository.dart';
 class OnBoardingController extends StateNotifier<AsyncValue<bool>> {
   final OnBoardingRepository _repository;
 
-  OnBoardingController({
-    required repository,
-  })  : _repository = repository,
-        super(const AsyncData(false));
-
-  void validateOnBoarding() {
+  OnBoardingController({required repository}) : _repository = repository, super(const AsyncData(false)) {
     _getCheckOnBoarding();
   }
 
@@ -23,6 +18,7 @@ class OnBoardingController extends StateNotifier<AsyncValue<bool>> {
   }
 
   Future<void> _getCheckOnBoarding() async {
+    state = const AsyncValue.loading();
     state = await AsyncValue.guard(_repository.getCheckOnBoarding);
   }
 
@@ -34,8 +30,5 @@ class OnBoardingController extends StateNotifier<AsyncValue<bool>> {
 }
 
 final onBoardingController = StateNotifierProvider<OnBoardingController, AsyncValue<bool>>((ref) {
-  OnBoardingController controller = OnBoardingController(repository: ref.watch(onBoardingRepository));
-  controller.validateOnBoarding();
-
-  return controller;
+  return OnBoardingController(repository: ref.watch(onBoardingRepository));
 });
