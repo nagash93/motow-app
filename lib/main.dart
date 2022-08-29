@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:motow_app/app/firebase_config.dart';
+import 'package:motow_app/app/general_providers.dart';
 import 'package:motow_app/app/my_app.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  FirebaseConfig.initializeFirebaseApp().whenComplete(
-    () => FirebaseConfig.initializeFirestore(),
-  );
+  FirebaseConfig.initializeApp();
 
-  runApp(const ProviderScope(child: MyApp()));
+  final sharedPreferences = await SharedPreferences.getInstance();
+  runApp(
+    ProviderScope(
+      overrides: [
+        sharedPreferencesProvider.overrideWithValue(sharedPreferences),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }

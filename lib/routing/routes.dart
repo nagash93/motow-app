@@ -11,17 +11,17 @@ import 'package:motow_app/features/search/search_view.dart';
 import 'package:motow_app/features/onboarding/screens/splashscreen_view.dart';
 import 'package:motow_app/routing/route_paths.dart';
 
-class Routes{
-  static var  routerList = <String, WidgetBuilder>{
-    RoutePaths.splashScreen: (context) =>  SplashScreenView(),
-    RoutePaths.onboarding: (context) => OnboardingView(),
-    RoutePaths.main: (context) =>  MainView(),
+class Routes {
+  static var routerList = <String, WidgetBuilder>{
+    RoutePaths.splashScreen: (context) => const SplashScreenView(),
+    RoutePaths.onboarding: (context) => const OnBoardingView(),
+    RoutePaths.main: (context) => MainView(),
     RoutePaths.favorites: (context) => const FavoritesView(),
-    RoutePaths.search: (context) =>  SearchView(),
+    RoutePaths.search: (context) => SearchView(),
     RoutePaths.addScreen: (context) => const AddView(),
-    RoutePaths.register: (context) =>  RegisterView(),
-    RoutePaths.listSearch: (context) =>  ListSearchView(),
-    RoutePaths.productDetail: (context) =>  ProductDetailView(),
-    RoutePaths.helpScreen: (context) =>  HelpView(),
+    RoutePaths.register: (context) => const RegisterView(),
+    RoutePaths.listSearch: (context) => const ListSearchView(),
+    RoutePaths.productDetail: (context) => const ProductDetailView(),
+    RoutePaths.helpScreen: (context) => const HelpView(),
   };
 }
