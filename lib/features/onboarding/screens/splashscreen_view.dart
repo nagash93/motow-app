@@ -13,11 +13,17 @@ class SplashScreenView extends HookConsumerWidget {
     final controller = SimpleAnimation('Animation 1', autoplay: true);
 
     ref.listen<AsyncValue>(onBoardingController, (data, state) {
-      if (state.value == true) {
-        Navigator.pushReplacementNamed(context, RoutePaths.main);
-      } else {
-        Navigator.pushReplacementNamed(context, RoutePaths.onboarding);
-      }
+      controller.isActiveChanged.addListener(() {
+        if (controller.isActive == false) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (state.value == true) {
+              Navigator.pushReplacementNamed(context, RoutePaths.main);
+            } else {
+              Navigator.pushReplacementNamed(context, RoutePaths.onboarding);
+            }
+          });
+        }
+      });
     });
 
     return Padding(
