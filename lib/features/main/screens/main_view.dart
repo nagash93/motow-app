@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_zoom_drawer/config.dart';
 
 import 'package:motow_app/common_widgets/drawer_menu/drawer_main_menu.dart';
 import 'package:motow_app/common_widgets/item_tow/item_tow.dart';
@@ -72,50 +70,5 @@ class MainView extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  _mainScren(ZoomDrawerController controller) {
-    return Scaffold(
-        appBar: MainAppBar(
-          controller: controller,
-        ),
-        body: Column(
-          children: [
-            const MiniSlider(),
-            MainButton(
-              prefixIcon: Icons.search,
-              text: 'Buscar',
-              onTap: () => debugPrint('test'),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Row(
-                children: const [
-                  Expanded(
-                      child: Text('Ultimos Agregdos',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ))),
-                  Text('Ver Todos',
-                      style: TextStyle(
-                        fontSize: 16,
-                      ))
-                ],
-              ),
-            ),
-            Expanded(
-              child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 200,
-                      childAspectRatio: 1 / 1,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20),
-                  itemCount: 10,
-                  itemBuilder: (BuildContext ctx, index) {
-                    return const ItemTow();
-                  }),
-            )
-          ],
-        ));
   }
 }

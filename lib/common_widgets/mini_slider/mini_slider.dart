@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:motow_app/common_widgets/mini_slider/mini_slider_card.dart';
 
 import 'package:motow_app/constants/styles/style_shared.dart';
 import 'package:motow_app/features/main/controller/advertising_controller.dart';
+import 'package:motow_app/features/main/model/mini_slider_item_model.dart';
 
 class MiniSlider extends HookConsumerWidget {
   const MiniSlider({Key? key}) : super(key: key);
@@ -18,51 +20,30 @@ class MiniSlider extends HookConsumerWidget {
 
     return SizedBox(
       height: 170,
-      child: Stack(
-        alignment: const Alignment(-0.9, 0.8),
-        children: [
-          /*PageView(
-            controller: pageController,
-            children: [
-              _itemSlider(),
-              _itemSlider(),
-              _itemSlider(),
-            ],
-            onPageChanged: (page) {
-              selectedIndex.value = page;
-            },
-          ),*/
-
-          state.when(
-            data: (data) => PageView(
+      child: state.when(
+        data: (data) {
+          return Stack(alignment: const Alignment(-0.9, 0.8), children: [
+            PageView(
               controller: pageController,
-              children: data.map((value) => _itemSlider()).toList(),
+              children:
+                  data.map((value) => MiniSliderCard(item: value)).toList(),
+              onPageChanged: (page) {
+                selectedIndex.value = page;
+              },
             ),
-            error: (e, st) => Text('Error: $e'),
-            loading: () => const CircularProgressIndicator(),
-          ),
-          SizedBox(
-            width: 80,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _dotIndicator(selectedIndex.value == 0),
-                _dotIndicator(selectedIndex.value == 1),
-                _dotIndicator(selectedIndex.value == 2),
-              ],
+            SizedBox(
+              width: 80,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children:[
+                  ...data.asMap().entries.map((value) => _dotIndicator(selectedIndex.value ==value.key  )).toList(),
+                ]
+              ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _itemSlider() {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: ColorApp.grey,
-        borderRadius: BorderRadius.circular(20),
+          ]);
+        },
+        error: (e, st) => Text('Error: $e'),
+        loading: () => const CircularProgressIndicator(),
       ),
     );
   }
