@@ -7,18 +7,20 @@ class MiniSliderCard extends StatelessWidget {
   const MiniSliderCard({Key? key,this.item}) : super(key: key);
   final MiniSliderItem? item;
 
-
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       imageUrl: item?.urlImage??'',
-      imageBuilder: (context, imageProvider) => Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          image: DecorationImage(
-              image: imageProvider,
-              fit: BoxFit.cover,),
+      imageBuilder: (context, imageProvider) => GestureDetector(
+        onTap: item?.route != null? ()=> Navigator.pushNamed(context,item?.route??''):null,
+        child: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            image: DecorationImage(
+                image: imageProvider,
+                fit: BoxFit.cover,),
+          ),
         ),
       ),
       placeholder: (context, url) => const LoadingWidget(),

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:collection/collection.dart';
+import 'package:motow_app/common_widgets/loading_widget/loading_widget.dart';
 import 'package:motow_app/common_widgets/mini_slider/mini_slider_card.dart';
+import 'package:motow_app/common_widgets/mini_slider/mini_slider_indicator.dart';
 import 'package:motow_app/constants/styles/style_shared.dart';
 import 'package:motow_app/features/main/controller/advertising_controller.dart';
 
@@ -33,28 +35,14 @@ class MiniSlider extends HookConsumerWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: data.mapIndexed((index, element) {
-                  return _dotIndicator(selectedIndex.value == index);
+                  return MiniSliderIndicator(isSelected:selectedIndex.value == index);
                 }).toList()
               ),
             ),
           ]);
         },
         error: (e, st) => Text('Error: $e'),
-        loading: () => const CircularProgressIndicator(),
-      ),
-    );
-  }
-
-  Widget _dotIndicator(isSelected) {
-    return AnimatedContainer(
-      duration: const Duration(seconds: 1),
-      width: isSelected ? 15 : 10,
-      height: isSelected ? 15 : 10,
-      margin: const EdgeInsets.all(5),
-      decoration: BoxDecoration(
-        color: isSelected ? ColorApp.black : ColorApp.lightGray,
-        shape: BoxShape.circle,
-        border: Border.all(color: ColorApp.lightGray, width: 1),
+        loading: () => const LoadingWidget(),
       ),
     );
   }
