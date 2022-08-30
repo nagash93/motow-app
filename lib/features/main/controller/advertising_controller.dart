@@ -8,7 +8,6 @@ class AdvertisingController extends StateNotifier<AsyncValue<List<MiniSliderItem
   final AdvertisingRepository _repository;
 
   AdvertisingController({required repository}) : _repository = repository, super(const AsyncData([])) {
-    state = const AsyncValue.loading();
     getData();
   }
 
@@ -18,8 +17,6 @@ class AdvertisingController extends StateNotifier<AsyncValue<List<MiniSliderItem
   }
 }
 
-final advertisingController =
-    StateNotifierProvider<AdvertisingController, AsyncValue<List<MiniSliderItem>>>(
-        (ref) {
+final advertisingController = StateNotifierProvider<AdvertisingController, AsyncValue<List<MiniSliderItem>>>((ref) {
   return AdvertisingController(repository: ref.watch(advertisingRepository));
 });

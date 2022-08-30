@@ -6,17 +6,18 @@ import 'package:motow_app/features/main/model/mini_slider_item_model.dart';
 
 class AdvertisingFirestoreRepository extends AdvertisingRepository {
   final FirebaseFirestore _firestore;
+
   AdvertisingFirestoreRepository({required firestore}) : _firestore = firestore;
 
   @override
   Future<List<MiniSliderItem>> getMiniSliderItem() async {
-    final advertisingCollection = _firestore.collection("/slider");
-    QuerySnapshot snapshot =
-        await advertisingCollection.orderBy('priority').get();
-    List<MiniSliderItem> _todos = snapshot.docs
-        .map((e) => MiniSliderItem.fromMap(e.data() as Map<String, dynamic>))
-        .toList();
-    return _todos;
+    final collection = _firestore.collection("slider").withConverter<MiniSliderItem>(
+      fromFirestore: (snapshots, _) => MiniSliderItem.fromMap(snapshots.data()!),
+      toFirestore: (ads, _) => ads.toMap(),
+    ).orderBy('priority');
+
+    final querySnapshot = await collection.get();
+    return querySnapshot.docs.map((e) => e.data()).toList();
   }
 }
 

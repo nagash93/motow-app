@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
+import 'package:collection/collection.dart';
 import 'package:motow_app/common_widgets/mini_slider/mini_slider_card.dart';
 import 'package:motow_app/constants/styles/style_shared.dart';
 import 'package:motow_app/features/main/controller/advertising_controller.dart';
@@ -16,7 +15,6 @@ class MiniSlider extends HookConsumerWidget {
     final selectedIndex = useState(0);
 
     final state = ref.watch(advertisingController);
-    final controller = ref.read(advertisingController.notifier);
 
     return SizedBox(
       height: 170,
@@ -25,8 +23,7 @@ class MiniSlider extends HookConsumerWidget {
           return Stack(alignment: const Alignment(-0.9, 0.8), children: [
             PageView(
               controller: pageController,
-              children:
-                  data.map((value) => MiniSliderCard(item: value)).toList(),
+              children: data.map((value) => MiniSliderCard(item: value)).toList(),
               onPageChanged: (page) {
                 selectedIndex.value = page;
               },
@@ -35,9 +32,9 @@ class MiniSlider extends HookConsumerWidget {
               width: 80,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children:[
-                  ...data.asMap().entries.map((value) => _dotIndicator(selectedIndex.value ==value.key  )).toList(),
-                ]
+                children: data.mapIndexed((index, element) {
+                  return _dotIndicator(selectedIndex.value == index);
+                }).toList()
               ),
             ),
           ]);
@@ -49,9 +46,10 @@ class MiniSlider extends HookConsumerWidget {
   }
 
   Widget _dotIndicator(isSelected) {
-    return Container(
-      width: 15,
-      height: 15,
+    return AnimatedContainer(
+      duration: const Duration(seconds: 1),
+      width: isSelected ? 15 : 10,
+      height: isSelected ? 15 : 10,
       margin: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         color: isSelected ? ColorApp.black : ColorApp.lightGray,
