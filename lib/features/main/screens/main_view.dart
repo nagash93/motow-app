@@ -41,7 +41,7 @@ class MainView extends StatelessWidget {
                 children: const [
                   Expanded(
                     child: Text(
-                      'Ultimos Agregdos',
+                      'Ultimos Agregados',
                       style: TextStyle(
                         fontSize: 16,
                       ),
