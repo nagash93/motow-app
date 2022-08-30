@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:motow_app/common_widgets/mini_slider/mini_slider_card.dart';
 
+import 'package:motow_app/common_widgets/mini_slider/mini_slider_card.dart';
 import 'package:motow_app/constants/styles/style_shared.dart';
 import 'package:motow_app/features/main/controller/advertising_controller.dart';
-import 'package:motow_app/features/main/model/mini_slider_item_model.dart';
 
 class MiniSlider extends HookConsumerWidget {
   const MiniSlider({Key? key}) : super(key: key);
