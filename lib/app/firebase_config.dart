@@ -6,7 +6,7 @@ import 'firebase_options.dart';
 class FirebaseConfig {
   static Future<void> initializeApp() async {
     await _initializeFirebaseApp();
-    _initializeFirestore();
+    _initializeFirestore(useEmulator: false);
   }
 
   static Future<void> _initializeFirebaseApp() async {
