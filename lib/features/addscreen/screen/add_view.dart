@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:motow_app/common_widgets/simple_app_bar/simple_app_bar.dart';
 import 'package:motow_app/constants/styles/style_shared.dart';
-import 'package:motow_app/features/addscreen/components/label_text_form.dart';
-import 'package:motow_app/features/addscreen/components/page_indicator.dart';
+
+import 'components/label_text_form.dart';
+import 'components/page_indicator.dart';
+import 'components/picker_image_widget.dart';
 
 class AddView extends HookWidget {
   const AddView({Key? key}) : super(key: key);
@@ -19,14 +21,14 @@ class AddView extends HookWidget {
         child: PageView(
           controller: controller,
           children: [
-            _pageName(),
+            _pageName(context),
           ],
         ),
       ),
     );
   }
 
-  Widget _pageName() {
+  Widget _pageName(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(20),
       child: Column(children: [
@@ -43,16 +45,7 @@ class AddView extends HookWidget {
                 hintText: 'Gruas Rodrigues',),
             )),
         const LabelTextForm(text: 'Agrega una imagen:'),
-        Container(
-          width: 150,
-          height: 150,
-          decoration: BoxDecoration(
-              color: ColorApp.lightGray, borderRadius: BorderRadius.circular(20)),
-          child: const IconButton (
-            icon: Icon(Icons.image_outlined,color: ColorApp.black,),
-            onPressed: null,
-          ),
-        ),
+         PickerImage(),
         const SizedBox(height: 10,),
         Row(
           children: const [
@@ -64,7 +57,7 @@ class AddView extends HookWidget {
             )
           ],
         ),
-        const Expanded(child: SizedBox()),
+        const Spacer(),
         Row(
           children: [
             const Checkbox(value: true, onChanged: null),
@@ -83,6 +76,10 @@ class AddView extends HookWidget {
           currentPage: 1,
           totalPage: 2,
         ),
+        ElevatedButton(onPressed: (){
+       // set data
+        },
+        child: Text('Subir'),)
       ]),
     );
   }

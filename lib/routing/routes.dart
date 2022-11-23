@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:motow_app/features/addscreen/add_view.dart';
+import 'package:motow_app/features/addscreen/screen/add_view.dart';
 import 'package:motow_app/features/favorites/favorites_view.dart';
 import 'package:motow_app/features/help/help_view.dart';
 import 'package:motow_app/features/main/screens/main_view.dart';
