@@ -5,6 +5,7 @@ import 'package:motow_app/app/my_app.dart';
 import 'package:motow_app/features/main/screens/main_view.dart';
 import 'package:motow_app/features/onboarding/screens/onboarding_view.dart';
 import 'package:motow_app/features/onboarding/screens/splashscreen_view.dart';
+import 'package:motow_app/features/register/screens/register_view.dart';
 import 'package:motow_app/routing/route_paths.dart';
 
 mixin RouterMixin on State<MyApp> {
@@ -49,6 +50,18 @@ mixin RouterMixin on State<MyApp> {
             name: state.name,
             key: state.pageKey,
             child: const MainView(),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) =>
+                FadeTransition(opacity: animation, child: child),
+          ),
+        ),
+        GoRoute(
+          name: RouteName.register,
+          path: RoutePaths.register,
+          pageBuilder: (context, state) => CustomTransitionPage<void>(
+            name: state.name,
+            key: state.pageKey,
+            child: const RegisterView(),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) =>
                 FadeTransition(opacity: animation, child: child),

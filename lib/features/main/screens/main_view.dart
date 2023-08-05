@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:motow_app/common_widgets/drawer_menu/drawer_main_menu.dart';
 import 'package:motow_app/common_widgets/item_tow/item_tow.dart';
 import 'package:motow_app/common_widgets/main_app_bar/main_app_bar.dart';
@@ -9,8 +10,6 @@ import 'package:motow_app/routing/route_paths.dart';
 
 class MainView extends StatelessWidget {
   const MainView({super.key});
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +27,7 @@ class MainView extends StatelessWidget {
                 prefixIcon: Icons.search,
                 text: 'Buscar',
                 onTap: () {
-                  Navigator.pushNamed(context, RoutePaths.search);
+                  context.pushNamed(RouteName.search);
                 },
               ),
             ),

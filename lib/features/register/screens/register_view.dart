@@ -1,18 +1,13 @@
-/*
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:motow_app/common_widgets/login_modal/login_modal.dart';
 import 'package:motow_app/common_widgets/main_button/main_button.dart';
 import 'package:motow_app/common_widgets/simple_app_bar/simple_app_bar.dart';
-import 'package:motow_app/features/register/controller/register_controller.dart';
 
-class RegisterView extends ConsumerWidget {
+class RegisterView extends StatelessWidget {
   const RegisterView({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-
-
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: const SimpleAppBar(
         title: 'Registro',
@@ -65,7 +60,7 @@ class RegisterView extends ConsumerWidget {
                           width: 10,
                         ),
                         Text(
-                        'x',
+                          'x',
                           style: TextStyle(fontSize: 20),
                         )
                       ],
@@ -92,4 +87,3 @@ class RegisterView extends ConsumerWidget {
     );
   }
 }
-*/
