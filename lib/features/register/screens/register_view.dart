@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:motow_app/common_widgets/login_modal/login_modal.dart';
@@ -10,8 +11,7 @@ class RegisterView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(registerController);
-    final controller = ref.read(registerController.notifier);
+
 
     return Scaffold(
       appBar: const SimpleAppBar(
@@ -36,9 +36,9 @@ class RegisterView extends ConsumerWidget {
             const SizedBox(
               height: 50,
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
+              children: [
                 Text(
                   'Beneficios de registro:',
                   style: TextStyle(fontSize: 25),
@@ -51,22 +51,22 @@ class RegisterView extends ConsumerWidget {
             Expanded(
               flex: 2,
               child: ListView.builder(
-                itemCount: controller.bonusList.length,
+                itemCount: 0,
                 itemBuilder: (BuildContext ctx, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  return const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10.0),
                     child: Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.check,
                           size: 20,
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 10,
                         ),
                         Text(
-                          controller.bonusList[index],
-                          style: const TextStyle(fontSize: 20),
+                        'x',
+                          style: TextStyle(fontSize: 20),
                         )
                       ],
                     ),
@@ -92,3 +92,4 @@ class RegisterView extends ConsumerWidget {
     );
   }
 }
+*/

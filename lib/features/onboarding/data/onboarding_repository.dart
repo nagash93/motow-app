@@ -1,4 +1,3 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:motow_app/features/onboarding/data/onboarding_repository_abstract.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -21,6 +20,4 @@ class OnboardingRepository extends IOnboardingRepository{
   }
 
 }
-final onboardingRepository = Provider<IOnboardingRepository>((ref) {
-  return OnboardingRepository();
-});
+

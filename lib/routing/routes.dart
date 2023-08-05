@@ -1,27 +1,62 @@
-import 'package:flutter/material.dart';
-import 'package:motow_app/features/addscreen/add_view.dart';
-import 'package:motow_app/features/favorites/favorites_view.dart';
-import 'package:motow_app/features/help/help_view.dart';
+
+import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
+import 'package:motow_app/app/my_app.dart';
 import 'package:motow_app/features/main/screens/main_view.dart';
 import 'package:motow_app/features/onboarding/screens/onboarding_view.dart';
-import 'package:motow_app/features/product/product_detail_view.dart';
-import 'package:motow_app/features/register/screens/register_view.dart';
-import 'package:motow_app/features/search/list_search_view.dart';
-import 'package:motow_app/features/search/search_view.dart';
 import 'package:motow_app/features/onboarding/screens/splashscreen_view.dart';
 import 'package:motow_app/routing/route_paths.dart';
 
-class Routes{
-  static var  routerList = <String, WidgetBuilder>{
-    RoutePaths.splashScreen: (context) =>  SplashScreenView(),
-    RoutePaths.onboarding: (context) => OnboardingView(),
-    RoutePaths.main: (context) =>  MainView(),
-    RoutePaths.favorites: (context) => const FavoritesView(),
-    RoutePaths.search: (context) =>  SearchView(),
-    RoutePaths.addScreen: (context) => const AddView(),
-    RoutePaths.register: (context) =>  RegisterView(),
-    RoutePaths.listSearch: (context) =>  ListSearchView(),
-    RoutePaths.productDetail: (context) =>  ProductDetailView(),
-    RoutePaths.helpScreen: (context) =>  HelpView(),
-  };
+mixin RouterMixin on State<MyApp> {
+  final GlobalKey<NavigatorState> _rootNavigatorKey =
+  GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> _shellNavigatorKey =
+  GlobalKey<NavigatorState>();
+  GoRouter? _router;
+  GoRouter get router {
+    _router ??= GoRouter(
+      navigatorKey: _rootNavigatorKey,
+      initialLocation: RoutePaths.splashScreen,
+      routes: [
+        GoRoute(
+          name: RouteName.splashScreen,
+          path: RoutePaths.splashScreen,
+          pageBuilder: (context, state) => CustomTransitionPage<void>(
+            name: state.name,
+            key: state.pageKey,
+            child: const SplashScreenView(),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) =>
+                FadeTransition(opacity: animation, child: child),
+          ),
+        ),
+        GoRoute(
+          name: RouteName.onboarding,
+          path: RoutePaths.onboarding,
+          pageBuilder: (context, state) => CustomTransitionPage<void>(
+            name: state.name,
+            key: state.pageKey,
+            child: const OnboardingView(),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) =>
+                FadeTransition(opacity: animation, child: child),
+          ),
+        ),
+        GoRoute(
+          name: RouteName.main,
+          path: RoutePaths.main,
+          pageBuilder: (context, state) => CustomTransitionPage<void>(
+            name: state.name,
+            key: state.pageKey,
+            child: const MainView(),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) =>
+                FadeTransition(opacity: animation, child: child),
+          ),
+        ),
+
+      ],
+    );
+    return _router!;
+  }
 }

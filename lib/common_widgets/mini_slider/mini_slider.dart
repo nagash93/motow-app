@@ -48,7 +48,7 @@ class MiniSlider extends HookWidget {
     );
   }
 
-  Widget _dotIndicator(isSelected) {
+  Widget _dotIndicator(bool isSelected) {
     return Container(
       width: 15,
       height: 15,
