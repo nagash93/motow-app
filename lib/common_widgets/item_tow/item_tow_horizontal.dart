@@ -21,7 +21,7 @@ class ItemTowHorizontal extends StatelessWidget {
               height: 120,
               decoration: BoxDecoration(
                   color: ColorApp.lightGray,
-                  borderRadius: BorderRadius.circular(20)),
+                  borderRadius: BorderRadius.circular(10)),
             ),
             Expanded(
               child: Container(

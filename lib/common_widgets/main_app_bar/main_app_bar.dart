@@ -11,11 +11,12 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget{
     return AppBar(
       backgroundColor: ColorApp.white,
       toolbarHeight: 60,
-      elevation: 0.2,
+      elevation: 0.1,
       automaticallyImplyLeading: false,
       titleSpacing: 0,
       title: const Text('MoTow',style:TextStyle(
-        color:  ColorApp.black
+        color:  ColorApp.black,
+        fontSize: 25,
       ),),
       centerTitle: true,
       leading:  IconButton(

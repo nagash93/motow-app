@@ -18,6 +18,7 @@ class MiniAvatarUser extends StatelessWidget {
           borderRadius: BorderRadius.circular(50),
           color: ColorApp.black
         ),
+        child: const Icon(Icons.person_outlined,color: ColorApp.white,)
       ),
     );
   }

@@ -16,54 +16,66 @@ class MainView extends StatelessWidget {
     return Scaffold(
       appBar: const MainAppBar(),
       drawer: const DrawerMainMenu(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            const MiniSlider(),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: MainButton(
-                prefixIcon: Icons.search,
-                text: 'Buscar',
-                onTap: () {
-                  context.pushNamed(RouteName.search);
-                },
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print('help');
+        },
+        backgroundColor: ColorApp.accentRed,
+        child: const Icon(Icons.emergency,color: Colors.white,),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(right: 20,left:20,top: 10),
+          child: Column(
+            children: [
+              const MiniSlider(),
+              Padding(
+                padding: const EdgeInsets.only(top: 30,bottom: 20),
+                child: MainButton(
+                  prefixIcon: Icons.search,
+                  text: 'Buscar',
+                  onTap: () {
+                    context.pushNamed(RouteName.search);
+                  },
+                ),
               ),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(20),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      'Ultimos Agregdos',
-                      style: TextStyle(
-                        fontSize: 16,
+              const Padding(
+                padding: EdgeInsets.all(20),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Ultimos Agregdos',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
                       ),
                     ),
-                  ),
-                  Text(
-                    'Ver Todos',
-                    style: TextStyle(fontSize: 16, color: ColorApp.grey),
-                  )
-                ],
-              ),
-            ),
-            Expanded(
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 200,
-                  crossAxisSpacing: 5,
-                  mainAxisSpacing: 20,
+                    Text(
+                      'Ver Todos',
+                      style: TextStyle(fontSize: 14, color: ColorApp.grey),
+                    )
+                  ],
                 ),
-                itemCount: 10,
-                itemBuilder: (BuildContext ctx, index) {
-                  return const ItemTow();
-                },
               ),
-            )
-          ],
+
+              GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 200,
+                    mainAxisExtent: 180,
+                    childAspectRatio: 1,
+                    crossAxisSpacing: 5,
+                    mainAxisSpacing: 20,
+                  ),
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: 10,
+                  itemBuilder: (BuildContext ctx, index) {
+                    return const ItemTow();
+                  },
+                ),
+            ],
+          ),
         ),
       ),
     );
