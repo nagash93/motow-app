@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:motow_app/common_widgets/main_button/main_button.dart';
-import 'package:motow_app/features/register/controller/register_controller.dart';
 
 class LoginModal {
   openMenu(BuildContext context) {
@@ -19,20 +17,20 @@ class LoginModal {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              HookConsumer(
+          /*    HookConsumer(
                 builder: (
                   BuildContext context,
                   WidgetRef ref,
                   Widget? child,
-                ) {
-                  final controller = ref.read(registerController.notifier);
+                ) {*/
 
-                  return Column(
+
+                   Column(
                     children: [
                       MainButton(
                         text: 'Google',
                         onTap: () {
-                          controller.signInWithGoogle();
+                          // controller.signInWithGoogle();
                         },
                       ),
                       const SizedBox(
@@ -41,12 +39,12 @@ class LoginModal {
                       MainButton(
                         text: 'Apple',
                         onTap: () {
-                          controller.signInWithApple();
+                          // controller.signInWithApple();
                         },
                       ),
                     ],
-                  );
-                },
+                
+             /*   },*/
               ),
             ],
           ),

@@ -10,10 +10,10 @@ class MiniSlider extends HookWidget {
   Widget build(BuildContext context) {
     final pageController = usePageController();
     final selectedIndex = useState(0);
-    return Container(
+    return SizedBox(
         height: 170,
         child: Stack(
-          alignment: Alignment(-0.9, 0.8),
+          alignment: const Alignment(-0.9, 0.8),
           children: [
             PageView(
               controller: pageController,
@@ -44,11 +44,11 @@ class MiniSlider extends HookWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-          color: ColorApp.grey, borderRadius: BorderRadius.circular(20)),
+          color: ColorApp.grey, borderRadius: BorderRadius.circular(10)),
     );
   }
 
-  Widget _dotIndicator(isSelected) {
+  Widget _dotIndicator(bool isSelected) {
     return Container(
       width: 15,
       height: 15,

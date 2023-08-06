@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:motow_app/features/onboarding/data/onboarding_repository.dart';
+import 'package:go_router/go_router.dart';
+import 'package:motow_app/features/onboarding/bloc/onboarding_cubit.dart';
+
 import 'package:motow_app/features/onboarding/screens/Components/onboarding_indicator.dart';
 import 'package:motow_app/routing/route_paths.dart';
 
-import '../controller/onboarding_controller.dart';
 import 'Components/onboarding_item.dart';
 
-class OnboardingView extends HookConsumerWidget {
+class OnboardingView extends HookWidget {
   const OnboardingView({Key? key}) : super(key: key);
 
   final listPage = const [
@@ -28,7 +29,7 @@ class OnboardingView extends HookConsumerWidget {
   ];
 
   @override
-  Widget build(BuildContext context,ref) {
+  Widget build(BuildContext context) {
     final pageController = usePageController();
     final selectedIndex = useState(0);
     return Scaffold(
@@ -43,8 +44,8 @@ class OnboardingView extends HookConsumerWidget {
               if (indexPage == 3) {
                 Future.delayed(const Duration(milliseconds: 1200)).then(
                     (value) {
-                      ref.read(onboardingController.notifier).setCheckOnboarding();
-                      Navigator.pushReplacementNamed(context, RoutePaths.main);
+                      context.read<OnboardingCubit>().setOnboarding();
+                      context.pushReplacementNamed(RouteName.main);
                     });
               }
             },

@@ -15,7 +15,7 @@ class MainButton extends StatelessWidget {
         child: Ink(
           decoration: BoxDecoration(
             color: ColorApp.black,
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(10),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
           child: Row(

@@ -10,7 +10,7 @@ class TextFormCustom extends StatelessWidget {
         padding:const  EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
             color: ColorApp.lightGray,
-            borderRadius: BorderRadius.circular(20)),
+            borderRadius: BorderRadius.circular(10)),
         child: TextFormField(
           cursorColor: ColorApp.black,
           decoration: const InputDecoration(

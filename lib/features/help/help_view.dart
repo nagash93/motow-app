@@ -5,12 +5,12 @@ import 'package:motow_app/constants/styles/style_shared.dart';
 import 'package:motow_app/generated/assets.dart';
 
 class HelpView extends StatelessWidget {
-  const HelpView({Key? key}) : super(key: key);
+  const HelpView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SimpleAppBar(
+      appBar: const SimpleAppBar(
         title: '¿Que hacer si .. ?',
       ),
       body: Padding(
@@ -19,7 +19,6 @@ class HelpView extends StatelessWidget {
           children: [
             SvgPicture.asset(Assets.svgTowing,
             height: 200,),
-
             _item(text: 'Si yo choco'),
             _item(text: 'Me chocan'),
             _item(text: 'Me roban la moto'),
@@ -27,7 +26,7 @@ class HelpView extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar:  Card(
+      bottomNavigationBar:  const Card(
         child: Wrap(
          children: [
            Text('La informacion de esta seccion entregada por rotección Legal Motociclista',
@@ -39,7 +38,7 @@ class HelpView extends StatelessWidget {
     );
   }
 
-  _item({String? text, VoidCallback? onTap}) {
+  Widget _item({String? text, VoidCallback? onTap}) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
       padding: const EdgeInsets.symmetric(horizontal: 20),
