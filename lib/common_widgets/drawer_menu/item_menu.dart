@@ -11,14 +11,23 @@ class ItemMenuDrawer extends StatelessWidget {
   final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Icon(
-        icon,
-        color: ColorApp.white,
+    return Container(
+      padding: const EdgeInsets.only(right: 30),
+      child: ListTile(
+        leading: Icon(
+          icon,
+          color: ColorApp.white,
+        ),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(10),
+            bottomRight: Radius.circular(10),
+          ),
+        ),
+        title: Text(title ?? '',
+            style: const TextStyle(color: ColorApp.white, fontSize: 18)),
+        onTap: onTap,
       ),
-      title: Text(title ?? '',
-          style: const TextStyle(color: ColorApp.white, fontSize: 18)),
-      onTap: onTap,
     );
   }
 }

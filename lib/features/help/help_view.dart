@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:motow_app/common_widgets/custom_card/custom_card.dart';
 import 'package:motow_app/common_widgets/simple_app_bar/simple_app_bar.dart';
 import 'package:motow_app/constants/styles/style_shared.dart';
 import 'package:motow_app/generated/assets.dart';
@@ -15,10 +16,9 @@ class HelpView extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: ListView(
+        child: GridView.count(
+          crossAxisCount: 2,
           children: [
-            SvgPicture.asset(Assets.svgTowing,
-            height: 200,),
             _item(text: 'Si yo choco'),
             _item(text: 'Me chocan'),
             _item(text: 'Me roban la moto'),
@@ -26,10 +26,11 @@ class HelpView extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar:  const Card(
+      bottomNavigationBar: const CustomCard(
+        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Wrap(
          children: [
-           Text('La informacion de esta seccion entregada por rotección Legal Motociclista',
+           Text('La informacion de esta seccion entregada por Protección Legal Motociclista',
            textAlign: TextAlign.center,),
           // Image.asset(Assets.iconPlmotos)
          ],
@@ -40,29 +41,18 @@ class HelpView extends StatelessWidget {
 
   Widget _item({String? text, VoidCallback? onTap}) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       padding: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecarationShared.boxBorderRaidus
           .copyWith(border: Border.all(color: ColorApp.black)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Icon(Icons.motorcycle_outlined, size: 50, color: ColorApp.black),
           Text(
             text ?? '',
             style: ThemeText.simpleText,
           ),
-          Ink(
-              decoration: const ShapeDecoration(
-                color: ColorApp.ultraLightGray,
-                shape: CircleBorder(),
-              ),
-              child: IconButton(
-                icon: const Icon(
-                  Icons.arrow_forward,
-                  color: ColorApp.black,
-                ),
-                onPressed: onTap,
-              )),
         ],
       ),
     );
