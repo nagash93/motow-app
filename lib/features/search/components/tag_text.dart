@@ -14,7 +14,7 @@ class TagText extends StatelessWidget {
       decoration: BoxDecoration(
         color: isSelected?ColorApp.black:ColorApp.white,
         border: Border.all(color: ColorApp.black,width: 1),
-        borderRadius: BorderRadius.circular(20)
+        borderRadius: BorderRadius.circular(10)
       ),
       child: Center(child: Text(text??'',
       style: TextStyle(

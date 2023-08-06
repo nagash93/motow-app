@@ -53,7 +53,7 @@ class SearchView extends HookWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   decoration: BoxDecoration(
                     color: ColorApp.lightGray,
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: DropdownButtonFormField(
                     onChanged: (_) {},
@@ -74,7 +74,7 @@ class SearchView extends HookWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   decoration: BoxDecoration(
                     color: ColorApp.lightGray,
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: DropdownButtonFormField(
                     onChanged: (_) {},

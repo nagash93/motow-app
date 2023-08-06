@@ -3,7 +3,9 @@ import 'package:motow_app/common_widgets/avatar_user/mini_avatar_user.dart';
 import 'package:motow_app/constants/styles/style_shared.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget{
-  MainAppBar({Key? key}) : super(key: key);
+
+  const MainAppBar({Key? key}) : super(key: key);
+
 
 
   @override
@@ -11,11 +13,12 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget{
     return AppBar(
       backgroundColor: ColorApp.white,
       toolbarHeight: 60,
-      elevation: 0.2,
+      elevation: 0.1,
       automaticallyImplyLeading: false,
       titleSpacing: 0,
       title: const Text('MoTow',style:TextStyle(
-        color:  ColorApp.black
+        color:  ColorApp.black,
+        fontSize: 25,
       ),),
       centerTitle: true,
       leading:  IconButton(

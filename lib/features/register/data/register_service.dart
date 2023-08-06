@@ -9,14 +9,15 @@ class RegisterService {
 
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
-  signInWithGoogle() async {
+  Future<GoogleSignInAccount?> signInWithGoogle() async {
     try {
-      GoogleSignInAccount? user = await _googleSignIn.signIn();
+      final user = await _googleSignIn.signIn();
 
       return user;
     } catch (error) {
       debugPrint(error.toString());
     }
+    return null;
   }
 
   registerUserGoogle(GoogleSignInAccount user) {

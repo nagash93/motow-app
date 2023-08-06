@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:motow_app/common_widgets/login_modal/login_modal.dart';
 import 'package:motow_app/common_widgets/main_button/main_button.dart';
 import 'package:motow_app/common_widgets/simple_app_bar/simple_app_bar.dart';
-import 'package:motow_app/features/register/controller/register_controller.dart';
-import 'package:motow_app/features/register/screens/register_constants.dart';
 
-class RegisterView extends ConsumerWidget {
+import 'register_constants.dart';
+
+class RegisterView extends StatelessWidget {
   const RegisterView({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(registerController);
-    final controller = ref.read(registerController.notifier);
-
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: SimpleAppBar(
         title: RegisterConstants.title,
@@ -37,7 +33,7 @@ class RegisterView extends ConsumerWidget {
             const SizedBox(
               height: 50,
             ),
-            Row(
+             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
@@ -52,22 +48,22 @@ class RegisterView extends ConsumerWidget {
             Expanded(
               flex: 2,
               child: ListView.builder(
-                itemCount: controller.bonusList.length,
+                itemCount: 0,
                 itemBuilder: (BuildContext ctx, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  return const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10.0),
                     child: Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.check,
                           size: 20,
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 10,
                         ),
                         Text(
-                          controller.bonusList[index],
-                          style: const TextStyle(fontSize: 20),
+                          'x',
+                          style: TextStyle(fontSize: 20),
                         )
                       ],
                     ),

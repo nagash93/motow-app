@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
 import 'package:motow_app/common_widgets/drawer_menu/drawer_main_menu.dart';
 import 'package:motow_app/common_widgets/item_tow/item_tow.dart';
 import 'package:motow_app/common_widgets/main_app_bar/main_app_bar.dart';
@@ -9,64 +10,73 @@ import 'package:motow_app/constants/styles/style_shared.dart';
 import 'package:motow_app/routing/route_paths.dart';
 
 class MainView extends StatelessWidget {
-  MainView({Key? key}) : super(key: key);
-
-  //ZoomDrawerController controller = ZoomDrawerController();
+  const MainView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MainAppBar(),
       drawer: const DrawerMainMenu(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          children: [
-            const MiniSlider(),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: MainButton(
-                prefixIcon: Icons.search,
-                text: 'Buscar',
-                onTap: () {
-                  Navigator.pushNamed(context, RoutePaths.search);
-                },
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print('help');
+        },
+        backgroundColor: ColorApp.accentRed,
+        child: const Icon(Icons.emergency,color: Colors.white,),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(right: 20,left:20,top: 10),
+          child: Column(
+            children: [
+              const MiniSlider(),
+              Padding(
+                padding: const EdgeInsets.only(top: 30,bottom: 20),
+                child: MainButton(
+                  prefixIcon: Icons.search,
+                  text: 'Buscar',
+                  onTap: () {
+                    context.pushNamed(RouteName.search);
+                  },
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Row(
-                children: const [
-                  Expanded(
-                    child: Text(
-                      'Ultimos Agregados',
-                      style: TextStyle(
-                        fontSize: 16,
+              const Padding(
+                padding: EdgeInsets.all(20),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Ultimos Agregdos',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
                       ),
                     ),
-                  ),
-                  Text(
-                    'Ver Todos',
-                    style: TextStyle(fontSize: 16, color: ColorApp.grey),
-                  )
-                ],
-              ),
-            ),
-            Expanded(
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 200,
-                  childAspectRatio: 1 / 1,
-                  crossAxisSpacing: 5,
-                  mainAxisSpacing: 20,
+                    Text(
+                      'Ver Todos',
+                      style: TextStyle(fontSize: 14, color: ColorApp.grey),
+                    )
+                  ],
                 ),
-                itemCount: 10,
-                itemBuilder: (BuildContext ctx, index) {
-                  return const ItemTow();
-                },
               ),
-            )
-          ],
+              GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 200,
+                    mainAxisExtent: 180,
+                    childAspectRatio: 1,
+                    crossAxisSpacing: 5,
+                    mainAxisSpacing: 20,
+                  ),
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: 10,
+                  itemBuilder: (BuildContext ctx, index) {
+                    return const ItemTow();
+                  },
+                ),
+            ],
+          ),
+
         ),
       ),
     );

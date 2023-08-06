@@ -1,5 +1,3 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:motow_app/app/general_providers.dart';
 import 'package:motow_app/features/onboarding/data/onboarding_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -19,9 +17,3 @@ class OnBoardingLocalRepository implements OnBoardingRepository {
     await prefs.setBool(keyCheckOnBoarding, true);
   }
 }
-
-final onBoardingRepository = Provider<OnBoardingRepository>((ref) {
-  return OnBoardingLocalRepository(
-    prefs: ref.watch(sharedPreferencesProvider),
-  );
-});

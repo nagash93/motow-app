@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:motow_app/constants/styles/style_shared.dart';
 import 'package:motow_app/routing/route_paths.dart';
 
@@ -8,7 +9,7 @@ class MiniAvatarUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: ()=>Navigator.pushNamed(context, RoutePaths.register),
+      onTap: ()=>context.pushNamed(RouteName.register),
       child: Container(
         width: 40,
         height: 40,
@@ -17,6 +18,7 @@ class MiniAvatarUser extends StatelessWidget {
           borderRadius: BorderRadius.circular(50),
           color: ColorApp.black
         ),
+        child: const Icon(Icons.person_outlined,color: ColorApp.white,)
       ),
     );
   }

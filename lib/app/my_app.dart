@@ -1,23 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:motow_app/app/app_constants.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:motow_app/constants/styles/color_app.dart';
-import 'package:motow_app/routing/route_paths.dart';
+import 'package:motow_app/features/onboarding/bloc/onboarding_cubit.dart';
 import 'package:motow_app/routing/routes.dart';
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp>  with RouterMixin {
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: AppConstants.title,
+
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (_) => OnboardingCubit()),
+        ],
+        child: MaterialApp.router(
+      title: 'Motow',
       theme: ThemeData(
-        fontFamily: AppConstants.fontFamily,
+        useMaterial3: true,
+        fontFamily: 'JosefinSans',
         scaffoldBackgroundColor: ColorApp.white,
         primaryColor: ColorApp.grey,
       ),
-      initialRoute: RoutePaths.splashScreen,
-      routes: Routes.routerList,
-    );
+      routerConfig: router,
+    ));
   }
 }

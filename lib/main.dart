@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+
 import 'package:motow_app/app/firebase_config.dart';
 import 'package:motow_app/app/general_providers.dart';
 import 'package:motow_app/app/my_app.dart';
@@ -9,13 +9,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   FirebaseConfig.initializeApp();
 
-  final sharedPreferences = await SharedPreferences.getInstance();
-  runApp(
-    ProviderScope(
-      overrides: [
-        sharedPreferencesProvider.overrideWithValue(sharedPreferences),
-      ],
-      child: const MyApp(),
-    ),
-  );
+  runApp(const MyApp());
+
 }

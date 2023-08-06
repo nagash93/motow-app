@@ -1,3 +1,4 @@
+/*
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:motow_app/features/main/data/advertising_firestore_repository.dart';
 import 'package:motow_app/features/main/data/advertising_repository.dart';
@@ -20,3 +21,4 @@ class AdvertisingController extends StateNotifier<AsyncValue<List<MiniSliderItem
 final advertisingController = StateNotifierProvider<AdvertisingController, AsyncValue<List<MiniSliderItem>>>((ref) {
   return AdvertisingController(repository: ref.watch(advertisingRepository));
 });
+*/
