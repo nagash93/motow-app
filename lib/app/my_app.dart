@@ -22,6 +22,7 @@ class _MyAppState extends State<MyApp>  with RouterMixin {
         ],
         child: MaterialApp.router(
       title: 'Motow',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         fontFamily: 'JosefinSans',
