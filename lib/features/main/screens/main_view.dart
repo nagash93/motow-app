@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:motow_app/common_widgets/drawer_menu/drawer_main_menu.dart';
@@ -7,15 +8,28 @@ import 'package:motow_app/common_widgets/main_app_bar/main_app_bar.dart';
 import 'package:motow_app/common_widgets/main_button/main_button.dart';
 import 'package:motow_app/common_widgets/mini_slider/mini_slider.dart';
 import 'package:motow_app/constants/styles/style_shared.dart';
+import 'package:motow_app/features/main/bloc/mini_slider/mini_slider_cubit.dart';
 import 'package:motow_app/routing/route_paths.dart';
 
-class MainView extends StatelessWidget {
+class MainView extends StatefulWidget {
   const MainView({super.key});
+
+  @override
+  State<MainView> createState() => _MainViewState();
+}
+
+class _MainViewState extends State<MainView> {
+
+  @override
+  void initState() {
+    context.read<MiniSliderCubit>().miniSliderLoad();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MainAppBar(),
+      appBar: const MainAppBar(),
       drawer: const DrawerMainMenu(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -29,7 +43,14 @@ class MainView extends StatelessWidget {
           padding: const EdgeInsets.only(right: 20,left:20,top: 10),
           child: Column(
             children: [
-              const MiniSlider(),
+              BlocBuilder<MiniSliderCubit, MiniSliderState>(
+                  builder:  (_, state) {
+                if(state is MiniSliderSuccess){
+                  return MiniSlider(listMiniSliderItem: state.listMiniSliderItem,);
+                }
+                return const CircularProgressIndicator();
+              }
+              ),
               Padding(
                 padding: const EdgeInsets.only(top: 30,bottom: 20),
                 child: MainButton(

@@ -4,9 +4,9 @@ import 'package:motow_app/features/main/data/advertising_repository.dart';
 import 'package:motow_app/features/main/model/mini_slider_item_model.dart';
 
 class AdvertisingFirestoreRepository extends AdvertisingRepository {
-  final FirebaseFirestore _firestore;
 
-  AdvertisingFirestoreRepository({required firestore}) : _firestore = firestore;
+
+  final _firestore= FirebaseFirestore.instance;
 
   @override
   Future<List<MiniSliderItem>> getMiniSliderItem() async {

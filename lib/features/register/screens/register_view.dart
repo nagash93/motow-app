@@ -48,22 +48,22 @@ class RegisterView extends StatelessWidget {
             Expanded(
               flex: 2,
               child: ListView.builder(
-                itemCount: 0,
+                itemCount: RegisterConstants.bonusList.length,
                 itemBuilder: (BuildContext ctx, index) {
-                  return const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                  return  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10.0),
                     child: Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.check,
                           size: 20,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Text(
-                          'x',
-                          style: TextStyle(fontSize: 20),
+                          RegisterConstants.bonusList[index],
+                          style: const TextStyle(fontSize: 20),
                         )
                       ],
                     ),
