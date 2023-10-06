@@ -12,11 +12,10 @@ import 'package:motow_app/features/search/search_view.dart';
 import 'package:motow_app/routing/route_paths.dart';
 
 mixin RouterMixin on State<MyApp> {
-  final GlobalKey<NavigatorState> _rootNavigatorKey =
-  GlobalKey<NavigatorState>();
-  final GlobalKey<NavigatorState> _shellNavigatorKey =
-  GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
+
   GoRouter? _router;
+
   GoRouter get router {
     _router ??= GoRouter(
       navigatorKey: _rootNavigatorKey,
@@ -29,9 +28,9 @@ mixin RouterMixin on State<MyApp> {
             name: state.name,
             key: state.pageKey,
             child: const SplashScreenView(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) =>
-                FadeTransition(opacity: animation, child: child),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(opacity: animation, child: child);
+            }
           ),
         ),
         GoRoute(
@@ -41,9 +40,9 @@ mixin RouterMixin on State<MyApp> {
             name: state.name,
             key: state.pageKey,
             child: OnboardingView(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) =>
-                FadeTransition(opacity: animation, child: child),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(opacity: animation, child: child);
+            }
           ),
         ),
         GoRoute(
@@ -53,9 +52,9 @@ mixin RouterMixin on State<MyApp> {
             name: state.name,
             key: state.pageKey,
             child: const MainView(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) =>
-                FadeTransition(opacity: animation, child: child),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(opacity: animation, child: child);
+            }
           ),
         ),
         GoRoute(
@@ -65,9 +64,9 @@ mixin RouterMixin on State<MyApp> {
             name: state.name,
             key: state.pageKey,
             child: const RegisterView(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) =>
-                FadeTransition(opacity: animation, child: child),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(opacity: animation, child: child);
+            }
           ),
         ),
         GoRoute(
@@ -77,9 +76,9 @@ mixin RouterMixin on State<MyApp> {
             name: state.name,
             key: state.pageKey,
             child: const HelpView(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) =>
-                FadeTransition(opacity: animation, child: child),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(opacity: animation, child: child);
+            }
           ),
         ),
         GoRoute(
@@ -89,9 +88,9 @@ mixin RouterMixin on State<MyApp> {
             name: state.name,
             key: state.pageKey,
             child: const FavoritesView(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) =>
-                FadeTransition(opacity: animation, child: child),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(opacity: animation, child: child);
+            }
           ),
         ),
         GoRoute(
@@ -101,9 +100,9 @@ mixin RouterMixin on State<MyApp> {
             name: state.name,
             key: state.pageKey,
             child:  SearchView(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) =>
-                FadeTransition(opacity: animation, child: child),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(opacity: animation, child: child);
+            }
           ),
         ),
       ],

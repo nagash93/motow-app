@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Permitir que Motow acceda a su ubicación para mostrarle opciones cercanas</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Permitir que Motow acceda a su ubicación para mostrarle opciones cercanas</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Permitir que Motow acceda a su ubicación para mostrarle opciones cercanas</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>

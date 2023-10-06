@@ -16,5 +16,4 @@ class OnboardingCubit extends Cubit<OnboardingState> {
   void setOnboarding() async{
     await _onboardingRepository.setCheckOnBoarding();
   }
-
 }

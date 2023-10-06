@@ -18,20 +18,21 @@ class _MyAppState extends State<MyApp>  with RouterMixin {
   Widget build(BuildContext context) {
 
     return MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (_) => OnboardingCubit()),
-          BlocProvider(create: (_) => MiniSliderCubit()),
-        ],
-        child: MaterialApp.router(
-      title: 'Motow',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-        fontFamily: 'JosefinSans',
-        scaffoldBackgroundColor: ColorApp.white,
-        primaryColor: ColorApp.grey,
+      providers: [
+        BlocProvider(create: (_) => OnboardingCubit()),
+        BlocProvider(create: (_) => MiniSliderCubit()),
+      ],
+      child: MaterialApp.router(
+        title: 'Motow',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          useMaterial3: true,
+          fontFamily: 'JosefinSans',
+          scaffoldBackgroundColor: ColorApp.white,
+          primaryColor: ColorApp.grey,
+        ),
+        routerConfig: router,
       ),
-      routerConfig: router,
-    ));
+    );
   }
 }
