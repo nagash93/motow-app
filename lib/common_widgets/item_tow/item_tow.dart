@@ -5,6 +5,7 @@ class ItemTow extends StatelessWidget {
   const ItemTow({Key? key, this.title, this.state}) : super(key: key);
   final String? title;
   final String? state;
+  
   @override
   Widget build(BuildContext context) {
     return Center(

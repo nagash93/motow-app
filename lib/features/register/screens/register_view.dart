@@ -3,40 +3,42 @@ import 'package:motow_app/common_widgets/login_modal/login_modal.dart';
 import 'package:motow_app/common_widgets/main_button/main_button.dart';
 import 'package:motow_app/common_widgets/simple_app_bar/simple_app_bar.dart';
 
+import 'register_constants.dart';
+
 class RegisterView extends StatelessWidget {
   const RegisterView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const SimpleAppBar(
-        title: 'Registro',
+      appBar: SimpleAppBar(
+        title: RegisterConstants.title,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'El registro y uso de la app es',
-              style: TextStyle(fontSize: 20),
+            Text(
+              RegisterConstants.registerSubtitle,
+              style: const TextStyle(fontSize: 20),
             ),
             const SizedBox(
               height: 10,
             ),
-            const Text(
-              '100% Gratis',
-              style: TextStyle(fontSize: 25),
+            Text(
+              RegisterConstants.hundred,
+              style: const TextStyle(fontSize: 25),
             ),
             const SizedBox(
               height: 50,
             ),
-            const Row(
+             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  'Beneficios de registro:',
-                  style: TextStyle(fontSize: 25),
+                  RegisterConstants.registrationBenefits,
+                  style: const TextStyle(fontSize: 25),
                 ),
               ],
             ),
@@ -46,22 +48,22 @@ class RegisterView extends StatelessWidget {
             Expanded(
               flex: 2,
               child: ListView.builder(
-                itemCount: 0,
+                itemCount: RegisterConstants.bonusList.length,
                 itemBuilder: (BuildContext ctx, index) {
-                  return const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                  return  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10.0),
                     child: Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.check,
                           size: 20,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Text(
-                          'x',
-                          style: TextStyle(fontSize: 20),
+                          RegisterConstants.bonusList[index],
+                          style: const TextStyle(fontSize: 20),
                         )
                       ],
                     ),
@@ -70,7 +72,7 @@ class RegisterView extends StatelessWidget {
               ),
             ),
             MainButton(
-              text: 'Registrar',
+              text: RegisterConstants.registerButton,
               onTap: () => LoginModal().openMenu(context),
             ),
             const SizedBox(

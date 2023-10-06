@@ -1,11 +1,16 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'package:motow_app/constants/styles/style_shared.dart';
 
-class MiniSlider extends HookWidget {
-  const MiniSlider({Key? key}) : super(key: key);
+import '../../features/main/model/mini_slider_item_model.dart';
 
+class MiniSlider extends HookWidget {
+   MiniSlider({Key? key, required this.listMiniSliderItem})
+      : super(key: key);
+
+  final List<MiniSliderItem> listMiniSliderItem;
   @override
   Widget build(BuildContext context) {
     final pageController = usePageController();
@@ -13,38 +18,51 @@ class MiniSlider extends HookWidget {
     return SizedBox(
         height: 170,
         child: Stack(
-          alignment: const Alignment(-0.9, 0.8),
+          alignment: const Alignment(-1, 0.95),
           children: [
-            PageView(
+            PageView.builder(
               controller: pageController,
-              children: [
-                _itemSlider(),
-                _itemSlider(),
-                _itemSlider(),
-              ],
+              itemCount: listMiniSliderItem.length,
+              itemBuilder: (context, index) {
+                return _itemSlider(listMiniSliderItem[index]);
+              },
               onPageChanged: (page) {
                 selectedIndex.value = page;
               },
             ),
+            if(listMiniSliderItem.length > 1)
             SizedBox(
                 width: 80,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _dotIndicator(selectedIndex.value == 0),
-                    _dotIndicator(selectedIndex.value == 1),
-                    _dotIndicator(selectedIndex.value == 2),
+                    ...listMiniSliderItem
+                        .map((e) => _dotIndicator(selectedIndex.value ==
+                            listMiniSliderItem.indexOf(e)))
+                        .toList(),
                   ],
                 ))
           ],
         ));
   }
 
-  Widget _itemSlider() {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-          color: ColorApp.grey, borderRadius: BorderRadius.circular(10)),
+  Widget _itemSlider(MiniSliderItem item) {
+
+    return CachedNetworkImage(
+      imageUrl: item.urlImage??'',
+      imageBuilder: (context, imageProvider) => Container(
+        width: double.infinity,
+        margin: const EdgeInsets.symmetric(horizontal: 10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          image: DecorationImage(
+              image: imageProvider,
+              fit: BoxFit.cover,
+             ),
+        ),
+      ),
+      placeholder: (context, url) => const CircularProgressIndicator(),
+      errorWidget: (context, url, error) => const Icon(Icons.error),
     );
   }
 

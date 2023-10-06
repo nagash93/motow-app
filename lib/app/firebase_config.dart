@@ -4,17 +4,22 @@ import 'package:flutter/foundation.dart';
 import 'firebase_options.dart';
 
 class FirebaseConfig {
-  static Future<void> initializeFirebaseApp() async {
+  static Future<void> initializeApp() async {
+    await _initializeFirebaseApp();
+    _initializeFirestore(useEmulator: true);
+  }
+
+  static Future<void> _initializeFirebaseApp() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
   }
 
-  static void initializeFirestore({
-    bool shouldUseFirestoreEmulator = kDebugMode,
+  static void _initializeFirestore({
+    bool useEmulator = kDebugMode,
     int port = 8080,
   }) {
-    if (shouldUseFirestoreEmulator) {
+    if (useEmulator) {
       FirebaseFirestore.instance.useFirestoreEmulator('localhost', port);
     }
   }

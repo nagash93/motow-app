@@ -5,9 +5,9 @@ import 'package:motow_app/features/register/data/register_service.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class RegisterRepository extends IRegisterRepository {
-  final RegisterService _service;
 
-  RegisterRepository({required service}) : _service = service;
+
+ final _service = RegisterService();
 
   @override
   Future<bool> signInWithGoogle() async {

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:motow_app/constants/styles/color_app.dart';
+import 'package:motow_app/features/main/bloc/mini_slider/mini_slider_cubit.dart';
 import 'package:motow_app/features/onboarding/bloc/onboarding_cubit.dart';
-import 'package:motow_app/routing/route_paths.dart';
 import 'package:motow_app/routing/routes.dart';
 
 class MyApp extends StatefulWidget {
@@ -15,12 +16,15 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp>  with RouterMixin {
   @override
   Widget build(BuildContext context) {
+
     return MultiBlocProvider(
         providers: [
           BlocProvider(create: (_) => OnboardingCubit()),
+          BlocProvider(create: (_) => MiniSliderCubit()),
         ],
         child: MaterialApp.router(
       title: 'Motow',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         fontFamily: 'JosefinSans',

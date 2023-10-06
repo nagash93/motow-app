@@ -1,20 +1,16 @@
-import 'package:motow_app/features/onboarding/data/onboarding_repository_abstract.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class OnboardingRepository extends IOnboardingRepository{
+class OnBoardingRepository {
 
 
   static const keyCheckOnboarding = 'checkOnboarding';
 
-  @override
-  Future<bool> getCheckOnboarding() async{
+  Future<bool> getCheckOnBoarding() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getBool(keyCheckOnboarding)??false;
   }
 
-  @override
-  Future<void> setCheckOnboarding() async {
-
+  Future<void> setCheckOnBoarding() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool(keyCheckOnboarding, true);
   }

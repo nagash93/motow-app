@@ -19,7 +19,6 @@ class SplashScreenView extends HookWidget {
           context.read<OnboardingCubit>().getOnboarding();
         }
       });
-      return null;
     });
     return BlocListener<OnboardingCubit, OnboardingState>(
       listener: (context, state) {

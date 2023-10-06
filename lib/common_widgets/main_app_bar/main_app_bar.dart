@@ -3,7 +3,9 @@ import 'package:motow_app/common_widgets/avatar_user/mini_avatar_user.dart';
 import 'package:motow_app/constants/styles/style_shared.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget{
-  const MainAppBar({Key? key,}) : super(key: key);
+
+  const MainAppBar({Key? key}) : super(key: key);
+
 
 
   @override
@@ -22,7 +24,6 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget{
       leading:  IconButton(
         icon:  const Icon(Icons.menu,color: ColorApp.black,),
         onPressed: () {
-          //controller.open!();
           Scaffold.of(context).openDrawer();
         },
       ),
