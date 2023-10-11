@@ -1,0 +1,10 @@
+name: Build & upload to Firebase App Distribution
+on: 
+  pull_request:
+    branches: [ develop ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
