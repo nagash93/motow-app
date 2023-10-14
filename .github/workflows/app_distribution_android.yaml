@@ -1,5 +1,7 @@
-name: Build & upload to Firebase App Distribution
-on: 
+name: Build & upload an Android App to Firebase App Distribution
+on:
+  push:
+    branches: [ feature/workflows ]
   pull_request:
     branches: [ develop ]
 jobs:
@@ -8,3 +10,13 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+      - name: Build Android App
+        run: flutter build apk --debug
+      - name: Upload Android App to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.7.0
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          groups: "qa"
+          releaseNotes: "This is a test release"
+          file: "build/app/outputs/flutter-apk/app-debug.apk"
