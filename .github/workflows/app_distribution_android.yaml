@@ -11,7 +11,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: Set up JDK 1.8
+      - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
           distribution: zulu
@@ -23,6 +23,7 @@ jobs:
           channel: stable
           flutter-version: stable
           architecture: x64
+          cache: false
 
       - name: Display Flutter version
         run: flutter --version
