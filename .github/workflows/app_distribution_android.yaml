@@ -1,10 +1,7 @@
 name: Build & upload an Android App to Firebase App Distribution
 on:
   workflow_dispatch:
-  push:
-    branches: [ feature/workflows ]
-  pull_request:
-    branches: [ develop ]
+  
 jobs:
   build:
     runs-on: ubuntu-latest
