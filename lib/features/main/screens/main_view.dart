@@ -30,7 +30,6 @@ class _MainViewState extends State<MainView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const MainAppBar(),
-      drawer: const DrawerMainMenu(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           print('help');
