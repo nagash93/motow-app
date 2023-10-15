@@ -1,5 +1,7 @@
 name: Build & upload an iOS App to Firebase App Distribution
 on: 
+  push:
+    branches: [ feature/workflows ]
   pull_request:
     branches: [ develop ]
 jobs:
