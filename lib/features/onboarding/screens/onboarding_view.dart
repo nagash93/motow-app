@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:motow_app/features/onboarding/bloc/onboarding_cubit.dart';
-import 'package:motow_app/features/onboarding/screens/Components/onboarding_indicator.dart';
+import 'package:motow_app/features/onboarding/screens/components/onboarding_indicator.dart';
 import 'package:motow_app/features/onboarding/screens/onboarding_view_constants.dart';
 import 'package:motow_app/routing/route_paths.dart';
 
