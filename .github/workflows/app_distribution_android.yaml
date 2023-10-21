@@ -36,12 +36,20 @@ jobs:
         with:
           ruby-version: 3.0.0
 
-      # - name: Update fastlane plugins
-      #   run: fastlane update_plugins
-      #   working-directory: android
+      - name: Install bundler
+        run: gem install bundler
+        working-directory: android
+
+      - name: Install dependencies
+        run: bundle install
+        working-directory: android
+
+      - name: Update fastlane plugins
+        run: bundle exec fastlane update_plugins
+        working-directory: android
 
       - name: Upload Android App to Firebase App Distribution with fastlane
-        run: fastlane appdistribution --verbose
+        run: bundle exec fastlane appdistribution --verbose
         env:
           ANDROID_APPID: ${{ secrets.FIREBASE_APP_ID }}
           SERVICE_CREDENTIAL: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
