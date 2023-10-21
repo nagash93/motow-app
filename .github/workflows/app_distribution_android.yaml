@@ -53,5 +53,5 @@ jobs:
         env:
           ANDROID_APPID: ${{ secrets.FIREBASE_APP_ID }}
           SERVICE_CREDENTIAL: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-          APPBUNDLE_PATH: ${{ github.workspace }}/build/app/outputs/bundle/release/app-release.aab
+          APPBUNDLE_PATH: ../build/app/outputs/bundle/release/app-release.aab
         working-directory: android
