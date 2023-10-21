@@ -23,11 +23,10 @@ platform :android do
 
   desc "Upload Android App to Firebase App Distribution"
   lane :appdistribution do
-    setup_ci if ENV['CI']
     firebase_app_distribution(
       app: ENV['ANDROID_APPID'],
       service_credentials_file: ENV['SERVICE_CREDENTIAL'],
-      android_artifact_type: "aab",
+      android_artifact_type: 'AAB',
       android_artifact_path: ENV['APPBUNDLE_PATH'],
     )
   end
