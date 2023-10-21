@@ -25,6 +25,7 @@ jobs:
       - name: Display Flutter version
         run: flutter --version
 
+      - name: Get Flutter dependencies
         run: flutter pub get
         
       - name: Build Android App
