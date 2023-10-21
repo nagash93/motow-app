@@ -31,8 +31,11 @@ jobs:
       - name: Build Android App
         run: flutter build appbundle --release
 
+      - name: Update fastlane plugins
+        run: fastlane update_plugins
+
       - name: Upload Android App to Firebase App Distribution with fastlane
-        run:  bundle exec fastlane appdistribution
+        run: fastlane appdistribution
         env:
           ANDROID_APPID: ${{ secrets.FIREBASE_APP_ID }}
           SERVICE_CREDENTIAL: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
