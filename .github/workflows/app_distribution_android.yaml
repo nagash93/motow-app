@@ -33,6 +33,7 @@ jobs:
 
       - name: Update fastlane plugins
         run: fastlane update_plugins
+        working-directory: android
 
       - name: Upload Android App to Firebase App Distribution with fastlane
         run: fastlane appdistribution
