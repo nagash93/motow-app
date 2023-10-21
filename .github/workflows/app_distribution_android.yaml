@@ -28,8 +28,11 @@ jobs:
       - name: Get Flutter dependencies
         run: flutter pub get
         
-      - name: Build Android App
-        run: flutter build appbundle --release
+      # - name: Build Android App
+      #   run: flutter build appbundle --release
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
 
       - name: Update fastlane plugins
         run: fastlane update_plugins
