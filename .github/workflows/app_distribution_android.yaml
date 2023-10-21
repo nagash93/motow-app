@@ -10,6 +10,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Print GITHUB_WORKSPACE
+        run: echo $GITHUB_WORKSPACE
+        
+      - name: Print APPBUNDLE_PATH
+        run: echo $GITHUB_WORKSPACE/home/runner/work/motow-app/motow-app/build/app/outputs/bundle/release/app-release.aab
+
+      - name: Print github.workspace
+        run: echo ${{ github.workspace }}
+
       - name: Check out repository code
         uses: actions/checkout@v4
 
@@ -53,5 +62,5 @@ jobs:
         env:
           ANDROID_APPID: ${{ secrets.FIREBASE_APP_ID }}
           SERVICE_CREDENTIAL: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-          APPBUNDLE_PATH: build/app/outputs/bundle/release/app-release.aab
+          APPBUNDLE_PATH: /home/runner/work/motow-app/motow-app/build/app/outputs/bundle/release/app-release.aab
         working-directory: android
