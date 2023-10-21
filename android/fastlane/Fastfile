@@ -31,19 +31,10 @@ platform :android do
     )
   end
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics
-
-    build_app(
-      skip_b
-    )
-  end
-
   desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
+  lane :playstore do
+    upload_to_play_store(
+      aab: ENV['APPBUNDLE_PATH'],
+    )
   end
 end
