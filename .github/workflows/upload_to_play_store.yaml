@@ -1,6 +1,5 @@
 name: Build & upload an Android App to Play Store
 on:
-  workflow_dispatch:
   pull_request:
     branches: [ main ]
     
@@ -46,10 +45,18 @@ jobs:
         run: bundle exec fastlane update_plugins
         working-directory: android
 
-      - name: Upload Android App to Play Store
+      - name: Create service credential file
+        run: echo -n "${{ secrets.SERVICE_CREDENTIAL_APPSTORE }}" | base64 -d > ${{ github.workspace }}/service_credential.json
+
+      - name: Upload service credential file
+        uses: actions/upload-artifact@v3
+        with:
+          name: service_credential.json
+          path: ${{ github.workspace }}/service_credential.json
+
+      - name: Upload Android App to Play Store with fastlane
         run: bundle exec fastlane playstore --verbose
         env:
-          ANDROID_APPID: ${{ secrets.FIREBASE_APP_ID }}
-          SERVICE_CREDENTIAL: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+          SERVICE_CREDENTIAL_APPSTORE: ${{ github.workspace }}/service_credential.json
           APPBUNDLE_PATH: ${{ github.workspace }}/build/app/outputs/bundle/release/app-release.aab
         working-directory: android

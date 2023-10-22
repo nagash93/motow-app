@@ -10,7 +10,7 @@ platform :android do
   lane :appdistribution do
     firebase_app_distribution(
       app: ENV['ANDROID_APPID'],
-      service_credentials_file: ENV['SERVICE_CREDENTIAL'],
+      service_credentials_file: ENV['SERVICE_CREDENTIAL_DISTRIBUTION'],
       android_artifact_type: 'AAB',
       android_artifact_path: ENV['APPBUNDLE_PATH'],
       debug: true,
@@ -20,6 +20,7 @@ platform :android do
   desc "Deploy a new version to the Google Play"
   lane :playstore do
     upload_to_play_store(
+      json_key: ENV['SERVICE_CREDENTIAL_PLAYSTORE'],
       aab: ENV['APPBUNDLE_PATH'],
     )
   end
