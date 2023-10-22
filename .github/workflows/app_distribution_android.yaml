@@ -48,10 +48,10 @@ jobs:
         run: bundle exec fastlane update_plugins
         working-directory: android
 
-      - name: Create a temporal service credential file
+      - name: Create service credential file
         run: echo "${{ secrets.CREDENTIAL_FILE_CONTENT }}" > ${{ github.workspace }}/service_credential.json
 
-      - name: Upload temporal service credential file
+      - name: Upload service credential file
         uses: actions/upload-artifact@v2
         with:
           name: service_credential.json
@@ -61,6 +61,6 @@ jobs:
         run: bundle exec fastlane appdistribution --verbose
         env:
           ANDROID_APPID: ${{ secrets.FIREBASE_APP_ID }}
-          SERVICE_CREDENTIAL_FILE: ${{ github.workspace }}/android/app/service_credential.json
+          SERVICE_CREDENTIAL_FILE: ${{ github.workspace }}/service_credential.json
           APPBUNDLE_PATH: ${{ github.workspace }}/build/app/outputs/bundle/release/app-release.aab
         working-directory: android
