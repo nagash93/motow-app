@@ -49,7 +49,7 @@ jobs:
       #   working-directory: android
 
       - name: Create service credential file
-        run: echo -n "${{ secrets.SERVICE_CREDENTIAL }}" > ${{ github.workspace }}/service_credential.json
+        run: echo -n "${{ secrets.SERVICE_CREDENTIAL }}" | base64 -d > ${{ github.workspace }}/service_credential.json
 
       - name: Mostrar el contenido del archivo JSON (si es necesario)
         run: cat ${{ github.workspace }}/service_credential.json
