@@ -49,10 +49,10 @@ jobs:
         working-directory: android
 
       - name: Create service credential file
-        run: echo "${{ secrets.CREDENTIAL_FILE_CONTENT }}" > ${{ github.workspace }}/service_credential.json
+        run: echo "${{ secrets.SERVICE_CREDENTIAL }}" > ${{ github.workspace }}/service_credential.json
 
       - name: Upload service credential file
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: service_credential.json
           path: ${{ github.workspace }}/service_credential.json
@@ -60,7 +60,7 @@ jobs:
       - name: Upload Android App to Firebase App Distribution with fastlane
         run: bundle exec fastlane appdistribution --verbose
         env:
-          ANDROID_APPID: ${{ secrets.FIREBASE_APP_ID }}
-          SERVICE_CREDENTIAL_FILE: ${{ github.workspace }}/service_credential.json
+          ANDROID_APPID: ${{ secrets.ANDROID_APPID }}
+          SERVICE_CREDENTIAL: ${{ github.workspace }}/service_credential.json
           APPBUNDLE_PATH: ${{ github.workspace }}/build/app/outputs/bundle/release/app-release.aab
         working-directory: android
