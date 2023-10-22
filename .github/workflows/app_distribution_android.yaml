@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo
-        run: echo "${{ secrets.SERVICE_CREDENTIAL }}"
+        run: echo -e -n "${{ secrets.SERVICE_CREDENTIAL }}"
 
       # - name: Check out repository code
       #   uses: actions/checkout@v4
