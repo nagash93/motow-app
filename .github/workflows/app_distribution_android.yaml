@@ -10,8 +10,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: echo
-        run: echo -e -n "${{ secrets.SERVICE_CREDENTIAL }}"
+      - name: printf
+        run: printf "%s" "${{ secrets.SERVICE_CREDENTIAL }}"
 
       # - name: Check out repository code
       #   uses: actions/checkout@v4
