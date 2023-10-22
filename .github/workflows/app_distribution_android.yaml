@@ -50,7 +50,6 @@ jobs:
 
       - name: Create a temporal service credential file
         run: echo "${{ secrets.CREDENTIAL_FILE_CONTENT }}" > ${{ github.workspace }}/service_credential.json
-        working-directory: android
 
       - name: Upload temporal service credential file
         uses: actions/upload-artifact@v2
