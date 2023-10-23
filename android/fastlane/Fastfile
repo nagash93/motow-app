@@ -1,0 +1,27 @@
+default_platform(:android)
+
+platform :android do
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test")
+  end
+
+  desc "Upload Android App to Firebase App Distribution"
+  lane :appdistribution do
+    firebase_app_distribution(
+      app: ENV['ANDROID_APPID'],
+      service_credentials_file: ENV['SERVICE_CREDENTIAL_DISTRIBUTION'],
+      android_artifact_type: 'AAB',
+      android_artifact_path: ENV['APPBUNDLE_PATH'],
+      debug: true,
+    )
+  end
+
+  desc "Deploy a new version to the Google Play"
+  lane :playstore do
+    upload_to_play_store(
+      json_key: ENV['SERVICE_CREDENTIAL_PLAYSTORE'],
+      aab: ENV['APPBUNDLE_PATH'],
+    )
+  end
+end
