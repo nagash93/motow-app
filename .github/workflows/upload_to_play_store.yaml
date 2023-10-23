@@ -30,9 +30,6 @@ jobs:
             echo 'storePassword=${{ secrets.KEYSTORE_PASSWORD }}' >> $KEYSTORE_PROPERTIES_PATH
             echo 'keyPassword=${{ secrets.KEYSTORE_KEY_PASSWORD }}' >> $KEYSTORE_PROPERTIES_PATH
 
-      - name: test print
-        run: ${{ github.workspace }}/android/key.properties
-
       - name: Display Flutter version
         run: flutter --version
 
