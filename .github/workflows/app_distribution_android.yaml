@@ -1,0 +1,64 @@
+name: Build & upload an Android App to Firebase App Distribution
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [ develop ]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          distribution: zulu
+          java-version: 11
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+
+      - name: Display Flutter version
+        run: flutter --version
+
+      - name: Get Flutter dependencies
+        run: flutter pub get
+        
+      - name: Build Android App
+        run: flutter build appbundle --release
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.0
+
+      - name: Install bundler
+        run: gem install bundler
+        working-directory: android
+
+      - name: Install dependencies
+        run: bundle install
+        working-directory: android
+
+      - name: Update fastlane plugins
+        run: bundle exec fastlane update_plugins
+        working-directory: android
+
+      - name: Create service credential file
+        run: echo -n "${{ secrets.SERVICE_CREDENTIAL_DISTRIBUTION }}" | base64 -d > ${{ github.workspace }}/service_credential.json
+
+      - name: Upload service credential file
+        uses: actions/upload-artifact@v3
+        with:
+          name: service_credential.json
+          path: ${{ github.workspace }}/service_credential.json
+
+      - name: Upload Android App to Firebase App Distribution with fastlane
+        run: bundle exec fastlane appdistribution --verbose
+        env:
+          ANDROID_APPID: ${{ secrets.ANDROID_APPID }}
+          SERVICE_CREDENTIAL_DISTRIBUTION: ${{ github.workspace }}/service_credential.json
+          APPBUNDLE_PATH: ${{ github.workspace }}/build/app/outputs/bundle/release/app-release.aab
+        working-directory: android
