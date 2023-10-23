@@ -22,6 +22,7 @@ platform :android do
     upload_to_play_store(
       json_key: ENV['SERVICE_CREDENTIAL_PLAYSTORE'],
       aab: ENV['APPBUNDLE_PATH'],
+      track: 'beta',
     )
   end
 end
