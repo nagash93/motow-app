@@ -78,11 +78,11 @@ jobs:
       #     APPBUNDLE_PATH: ${{ github.workspace }}/build/app/outputs/bundle/release/app-release.aab
       #   working-directory: android
 
-      # - name: Remove artifacts
-      #   run: rm -rf ${{ github.workspace }}/android/motow.jks ${{ github.workspace }}/service_credential.json
+      - name: Remove artifacts
+        run: rm -rf ${{ github.workspace }}/android/motow.jks
 
-      - uses: geekyeggo/delete-artifact@v2
-        with:
-          name: |
-            motow.jks
-            service_credential.json
+      # - uses: geekyeggo/delete-artifact@v2
+      #   with:
+      #     name: |
+      #       motow.jks
+      #       service_credential.json
