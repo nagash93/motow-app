@@ -1,9 +1,6 @@
 name: Build & upload an Android App to Firebase App Distribution
 on:
   workflow_dispatch:
-  pull_request:
-    types: [ review_requested ]
-    branches: [ develop ]
     
 jobs:
   build:
