@@ -29,7 +29,7 @@ jobs:
         run: flutter pub get
 
       - name: Retrieve base64 keystore and decode it to a file
-        run: echo ${{ secrets.KEYSTORE_FILE_BASE64 }} | base64 --decode > "${{ github.workspace }}/motow.jks"
+        run: echo ${{ secrets.KEYSTORE_FILE_BASE64 }} | base64 --decode > "${{ github.workspace }}/android/motow.jks"
 
       - name: Upload keystore file
         uses: actions/upload-artifact@v3
