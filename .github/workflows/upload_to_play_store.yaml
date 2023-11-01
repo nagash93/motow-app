@@ -3,8 +3,6 @@ on:
   pull_request:
     types: [ closed ]
     branches: [ main ]
-  push:
-    branches: [ feature/* ]
     
 jobs:
   build:
@@ -13,20 +11,20 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      # - name: Set up JDK 11
-      #   uses: actions/setup-java@v3
-      #   with:
-      #     distribution: zulu
-      #     java-version: 11
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          distribution: zulu
+          java-version: 11
 
-      # - name: Set up Flutter
-      #   uses: subosito/flutter-action@v2
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
 
-      # - name: Display Flutter version
-      #   run: flutter --version
+      - name: Display Flutter version
+        run: flutter --version
 
-      # - name: Get Flutter dependencies
-      #   run: flutter pub get
+      - name: Get Flutter dependencies
+        run: flutter pub get
 
       - name: Retrieve base64 keystore and decode it to a file
         run: echo ${{ secrets.KEYSTORE_FILE_BASE64 }} | base64 --decode > "${{ github.workspace }}/android/motow.jks"
@@ -37,30 +35,30 @@ jobs:
           name: motow.jks
           path: ${{ github.workspace }}/android/motow.jks
         
-      # - name: Build Android App
-      #   run: flutter build appbundle --release
-      #   env:
-      #     KEYSTORE_FILE_PATH: ${{ github.workspace }}/android/motow.jks
-      #     KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-      #     KEYSTORE_KEY_ALIAS: ${{ secrets.KEYSTORE_KEY_ALIAS }}
-      #     KEYSTORE_KEY_PASSWORD: ${{ secrets.KEYSTORE_KEY_PASSWORD }}
+      - name: Build Android App
+        run: flutter build appbundle --release
+        env:
+          KEYSTORE_FILE_PATH: ${{ github.workspace }}/android/motow.jks
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEYSTORE_KEY_ALIAS: ${{ secrets.KEYSTORE_KEY_ALIAS }}
+          KEYSTORE_KEY_PASSWORD: ${{ secrets.KEYSTORE_KEY_PASSWORD }}
 
-      # - name: Setup Ruby
-      #   uses: ruby/setup-ruby@v1
-      #   with:
-      #     ruby-version: 3.0.0
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.0
 
-      # - name: Install bundler
-      #   run: gem install bundler
-      #   working-directory: android
+      - name: Install bundler
+        run: gem install bundler
+        working-directory: android
 
-      # - name: Install dependencies
-      #   run: bundle install
-      #   working-directory: android
+      - name: Install dependencies
+        run: bundle install
+        working-directory: android
 
-      # - name: Update fastlane plugins
-      #   run: bundle exec fastlane update_plugins
-      #   working-directory: android
+      - name: Update fastlane plugins
+        run: bundle exec fastlane update_plugins
+        working-directory: android
 
       - name: Create service credential file
         run: echo -n "${{ secrets.SERVICE_CREDENTIAL_PLAYSTORE }}" | base64 -d > ${{ github.workspace }}/service_credential.json
@@ -71,18 +69,15 @@ jobs:
           name: service_credential.json
           path: ${{ github.workspace }}/service_credential.json
 
-      # - name: Upload Android App to Play Store with fastlane
-      #   run: bundle exec fastlane playstore --verbose
-      #   env:
-      #     SERVICE_CREDENTIAL_PLAYSTORE: ${{ github.workspace }}/service_credential.json
-      #     APPBUNDLE_PATH: ${{ github.workspace }}/build/app/outputs/bundle/release/app-release.aab
-      #   working-directory: android
+      - name: Upload Android App to Play Store with fastlane
+        run: bundle exec fastlane playstore --verbose
+        env:
+          SERVICE_CREDENTIAL_PLAYSTORE: ${{ github.workspace }}/service_credential.json
+          APPBUNDLE_PATH: ${{ github.workspace }}/build/app/outputs/bundle/release/app-release.aab
+        working-directory: android
 
-      - name: Remove artifacts
-        run: rm -rf ${{ github.workspace }}/android/motow.jks
-
-      # - uses: geekyeggo/delete-artifact@v2
-      #   with:
-      #     name: |
-      #       motow.jks
-      #       service_credential.json
+      - uses: geekyeggo/delete-artifact@v2
+        with:
+          name: |
+            motow.jks
+            service_credential.json
