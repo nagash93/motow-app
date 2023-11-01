@@ -22,6 +22,12 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
 
+      - name: Display Flutter version
+        run: flutter --version
+
+      - name: Get Flutter dependencies
+        run: flutter pub get
+
       - name: Retrieve base64 keystore and decode it to a file
         run: echo ${{ secrets.KEYSTORE_FILE_BASE64 }} | base64 --decode > "${{ github.workspace }}/motow.jks"
 
@@ -30,17 +36,11 @@ jobs:
         with:
           name: motow.jks
           path: ${{ github.workspace }}/android/motow.jks
-
-      - name: Display Flutter version
-        run: flutter --version
-
-      - name: Get Flutter dependencies
-        run: flutter pub get
         
       - name: Build Android App
         run: flutter build appbundle --release
         env:
-          KEYSTORE_FILE_PATH: motow.jks
+          KEYSTORE_FILE_PATH: ${{ github.workspace }}/android/motow.jks
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEYSTORE_KEY_ALIAS: ${{ secrets.KEYSTORE_KEY_ALIAS }}
           KEYSTORE_KEY_PASSWORD: ${{ secrets.KEYSTORE_KEY_PASSWORD }}
