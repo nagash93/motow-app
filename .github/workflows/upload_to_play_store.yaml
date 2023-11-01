@@ -1,6 +1,7 @@
 name: Build & upload an Android App to Play Store
 on:
   pull_request:
+    types: [ closed ]
     branches: [ main ]
     
 jobs:
@@ -24,9 +25,23 @@ jobs:
 
       - name: Get Flutter dependencies
         run: flutter pub get
+
+      - name: Retrieve base64 keystore and decode it to a file
+        run: echo ${{ secrets.KEYSTORE_FILE_BASE64 }} | base64 --decode > "${{ github.workspace }}/android/motow.jks"
+
+      - name: Upload keystore file
+        uses: actions/upload-artifact@v3
+        with:
+          name: motow.jks
+          path: ${{ github.workspace }}/android/motow.jks
         
       - name: Build Android App
         run: flutter build appbundle --release
+        env:
+          KEYSTORE_FILE_PATH: ${{ github.workspace }}/android/motow.jks
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEYSTORE_KEY_ALIAS: ${{ secrets.KEYSTORE_KEY_ALIAS }}
+          KEYSTORE_KEY_PASSWORD: ${{ secrets.KEYSTORE_KEY_PASSWORD }}
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -60,3 +75,9 @@ jobs:
           SERVICE_CREDENTIAL_PLAYSTORE: ${{ github.workspace }}/service_credential.json
           APPBUNDLE_PATH: ${{ github.workspace }}/build/app/outputs/bundle/release/app-release.aab
         working-directory: android
+
+      - uses: geekyeggo/delete-artifact@v2
+        with:
+          name: |
+            motow.jks
+            service_credential.json
