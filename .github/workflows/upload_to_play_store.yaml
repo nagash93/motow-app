@@ -1,6 +1,7 @@
 name: Build & upload an Android App to Play Store
 on:
   pull_request:
+    types: [ closed ]
     branches: [ main ]
   push:
     branches: [ feature/* ]
@@ -22,24 +23,13 @@ jobs:
         uses: subosito/flutter-action@v2
 
       - name: Retrieve base64 keystore and decode it to a file
-        env:
-            KEYSTORE_BASE64: ${{ secrets.KEYSTORE_FILE_BASE64 }}
-        run: echo $KEYSTORE_BASE64 | base64 --decode > "${{ github.workspace }}/motow.jks"
+        run: echo ${{ secrets.KEYSTORE_FILE_BASE64 }} | base64 --decode > "${{ github.workspace }}/motow.jks"
 
       - name: Upload keystore file
         uses: actions/upload-artifact@v3
         with:
           name: motow.jks
-          path: ${{ github.workspace }}/motow.jks
-
-      - name: 📝🔐 Create keystore.properties file
-        env:
-            KEYSTORE_PROPERTIES_PATH: ${{ github.workspace }}/android/key.properties
-        run: |
-            echo 'storeFile=${{ github.workspace }}/motow.jks' > $KEYSTORE_PROPERTIES_PATH
-            echo 'keyAlias=${{ secrets.KEYSTORE_KEY_ALIAS }}' >> $KEYSTORE_PROPERTIES_PATH
-            echo 'storePassword=${{ secrets.KEYSTORE_PASSWORD }}' >> $KEYSTORE_PROPERTIES_PATH
-            echo 'keyPassword=${{ secrets.KEYSTORE_KEY_PASSWORD }}' >> $KEYSTORE_PROPERTIES_PATH
+          path: ${{ github.workspace }}/android/motow.jks
 
       - name: Display Flutter version
         run: flutter --version
@@ -49,6 +39,11 @@ jobs:
         
       - name: Build Android App
         run: flutter build appbundle --release
+        env:
+          KEYSTORE_FILE_PATH: motow.jks
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEYSTORE_KEY_ALIAS: ${{ secrets.KEYSTORE_KEY_ALIAS }}
+          KEYSTORE_KEY_PASSWORD: ${{ secrets.KEYSTORE_KEY_PASSWORD }}
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
