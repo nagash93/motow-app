@@ -83,4 +83,6 @@ jobs:
 
       - uses: geekyeggo/delete-artifact@v2
         with:
-          name: motow.jks
+          name: |
+            @motow.jks
+            service_credential.json
